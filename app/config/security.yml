@@ -29,6 +29,7 @@ security:
                 login_path: /login
                 check_path: /login_check
                 default_target_path: user_homepage
+                csrf_provider: security.csrf.token_manager
             logout:
                 path: /logout
                 target: homepage				
