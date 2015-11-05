@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="es" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="welcome">
+                <source>welcome</source>
+                <target>¡Bienvenido a Squash Connection!</target>
+            </trans-unit>
+            <trans-unit id="welcome.content">
+                <source>welcome.content</source>
+                <target>¿Cansado de jugar siempre contra los mismos? Regístrate y empieza a jugar con nuevos jugadores cada día.</target>
+            </trans-unit>
+			
+            <trans-unit id="club.heading">
+                <source>club.heading</source>
+                <target>Clubs</target>
+            </trans-unit>
+            <trans-unit id="club.content">
+                <source>club.content</source>
+                <target>Si eres dueño de un club, subscríbelo y otros jugadores podrán contactar con sus miembros </target>
+            </trans-unit>
+            <trans-unit id="club.subscription">
+                <source>club.subscription</source>
+                <target>Registrarse</target>
+            </trans-unit>
+			
+            <trans-unit id="player.heading">
+				<source>player.heading</source>
+				<target>Jugadores</target>
+			</trans-unit>
+			<trans-unit id="player.content">
+				<source>player.content</source>
+				<target>Regístrate, busca otro jugador de tu nivel y rétalo a un partido de squash</target>
+			</trans-unit>
+			<trans-unit id="player.subscription">
+				<source>player.subscription</source>
+				<target>Registrarse</target>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>

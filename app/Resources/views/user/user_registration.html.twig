@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'user_signUp' %}
+
+{% block header %}
+	<div class="header">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="{{ path('homepage') }}">
+						<img id="logo" src="{{ asset('images/logotipo.png') }}">
+					</a>
+				</div>
+			</div>
+		</nav>
+	</div>
+{% endblock %}
+
+{% block body %}
+	<div class="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5 col-md-offset-4">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Create Account</h3>				
+						</div>
+						<div class="panel-body">
+							<div class="form_signup">
+								{{ form_start(form, {'method': 'POST', 'attr': {'novalidate': 'novalidate', }}) }}
+								<div id="user_SignUp">
+									<div class="form-group {% if not form.name.vars.valid %}has-error{% else %}has-success{% endif %}">
+										{{ form_label(form.name, 'Name', {'label_attr': {'class': 'col-sm-4'}}) }}
+										<div class="col-sm-7">
+											{{ form_widget(form.name) }}
+											{{ form_errors(form.name) }}
+										</div>
+									</div>
+									<div class="form-group {% if not form.lastName.vars.valid %}has-error{% else %}has-success{% endif %}">
+										{{ form_label(form.lastName, 'Last Name', {'label_attr': {'class': 'col-sm-4'}}) }}
+										<div class="col-sm-7">
+											{{ form_widget(form.lastName) }}
+											{{ form_errors(form.lastName) }}
+										</div>
+									</div>
+									<div class="form-group {% if not form.email.vars.valid %}has-error{% else %}has-success{% endif %}">
+										{{ form_label(form.email, 'Email', {'label_attr': {'class': 'col-sm-4'}}) }}
+										<div class="col-sm-7">
+											{{ form_widget(form.email) }}
+											{{ form_errors(form.email) }}
+										</div>
+									</div>
+									<div class="form-group {% if not form.password.vars.valid %}has-error{% endif %}">
+										{{ form_label(form.password, 'Password', {'label_attr': {'class': 'col-sm-4'}}) }}
+										<div class="col-sm-7">
+											{{ form_widget(form.password) }}
+											{{ form_errors(form.password) }}
+										</div>
+									</div>
+									<div class="form-group {% if not form.playingLevel.vars.valid %}has-error{% else %}has-success{% endif %}">
+										{{ form_label(form.playingLevel, 'Playing Level', {'label_attr': {'class': 'col-sm-4'}}) }}
+										<div class="col-sm-3">
+											{{ form_widget(form.playingLevel) }}
+											
+										</div>
+										<div class="col-sm-5 col-sm-offset-4">{{ form_errors(form.playingLevel) }}</div>
+									</div>
+									<div class="form-group {% if not form.gender.vars.valid %}has-error{% else %}has-success{% endif %}">
+										{{ form_label(form.gender, 'Gender', {'label_attr': {'class': 'col-sm-4'}}) }}
+										<div class="col-sm-7">
+											{{ form_widget(form.gender) }}
+											{{ form_errors(form.gender) }}
+										</div>
+									</div>
+									<div class="form-group {% if not form.country.vars.valid %}has-error{% else %}has-success{% endif %}">
+										{{ form_label(form.country, 'Country', {'label_attr': {'class': 'col-sm-4'}}) }}
+										<div class="col-sm-7">
+											{{ form_widget(form.country) }}
+											{{ form_errors(form.country) }}
+										</div>
+									</div>
+									<div class="form-group {% if not form.city.vars.valid %}has-error{% else %}has-success{% endif %}">
+										{{ form_label(form.city, 'City', {'label_attr': {'class': 'col-sm-4'}}) }}
+										<div class="col-sm-7">
+											{{ form_widget(form.city) }}
+											{{ form_errors(form.city) }}
+										</div>
+									</div>
+									<div class="form-group">
+										</br>
+										<div class="col-sm-3 col-sm-offset-4">
+											{{ form_widget(form.send, {'attr': {'class': 'btn-primary'}, 'label': 'Sign Up'}) }}
+										</div>
+									</div>
+								</div>
+								{{ form_end(form) }}	
+								</div>
+							</div> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+

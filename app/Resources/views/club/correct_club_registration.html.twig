@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Squash Connection - Homepage {% endblock %}
+
+{% block body_id 'correct_registration'%}
+
+{% block header %}
+	<div id="header">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+					<a class="navbar-brand" href="{{ path('homepage') }}">
+						<img id="logo" src="{{ asset('images/logotipo.png') }}">
+					</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<span class="glyphicon glyphicon-globe" aria-hidden="true"></span> 
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li class="dropdown-header">Language</li>
+							<li class="divider"></li>
+							<li><a href="#"><span class="flag-icon flag-icon-gb"></span>English</a></li>
+							<li><a href="#"><span class="flag-icon flag-icon-es"></span>Spanish</a></li>
+							<li><a href="#"><span class="flag-icon flag-icon-nl"></span>Dutch</a></li>
+						</ul>
+					</li>
+				</ul>	
+			</div><!--/.navbar-collapse -->
+		</div>
+    </nav>
+    </div>
+{% endblock %}
+
+{% block body %}
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <p>Congratulations, you have signed up correctly. Log in and start discovering Squash Connection world</p>
+          <div class="row">
+          	<div class="col-md-6">
+          		Log in
+          	</div>
+          	<div class="col-md-6">
+          		Homepage
+          	</div>	
+          </div>
+        </div>
+      </div>
+	</div>
+
+{% endblock %}

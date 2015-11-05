@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Squash Connection - Club Sign Up {% endblock %}
+
+{% block body_id 'club_signUp' %}
+
+{% block header%}
+<div class="header">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="{{ path('homepage') }}">
+					<img id="logo" src="{{ asset('images/logotipo.png') }}">
+				</a>
+			</div>
+		</div>
+	</nav>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+<div class="container">
+<div class="row">
+  <div class="col-md-5 col-md-offset-4">
+  <div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Create Account</h3>
+	</div>
+	<div class="panel-body">
+	<div class="form_signup">
+		{{ form_start(form, {'method': 'POST'}) }}
+		<div id="club_SignUp">
+		<div class="form-group">
+			{{ form_label(form.email, 'Email', {'label_attr': {'class': 'col-sm-5'}}) }}
+			<div class="col-sm-7">
+				{{ form_widget(form.email) }}
+				{{ form_errors(form.email) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label(form.password, 'Password', {'label_attr': {'class': 'col-sm-5'}}) }}
+			<div class="col-sm-7">
+				{{ form_widget(form.password) }}
+				{{ form_errors(form.password) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label(form.clubName, 'Club Name', {'label_attr': {'class': 'col-sm-5'}}) }}
+			<div class="col-sm-7">
+				{{ form_widget(form.clubName) }}
+				{{ form_errors(form.clubName) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label(form.amountCourts, 'Amount of Courts', {'label_attr': {'class': 'col-sm-5'}}) }}
+			<div class="col-sm-2">
+				{{ form_widget(form.amountCourts) }}
+				{{ form_errors(form.amountCourts) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label(form.ownerName, 'Owner Name', {'label_attr': {'class': 'col-sm-5'}}) }}
+			<div class="col-sm-7">
+				{{ form_widget(form.ownerName) }}
+				{{ form_errors(form.ownerName) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label(form.ownerLastName, 'Owner Last Name', {'label_attr': {'class': 'col-sm-5'}}) }}
+			<div class="col-sm-7">
+				{{ form_widget(form.ownerLastName) }}
+				{{ form_errors(form.ownerLastName) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label(form.country, 'Country', {'label_attr': {'class': 'col-sm-5'}}) }}
+			<div class="col-sm-7">
+				{{ form_widget(form.country) }}
+				{{ form_errors(form.country) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label(form.city, 'City', {'label_attr': {'class': 'col-sm-5'}}) }}
+			<div class="col-sm-7">
+				{{ form_widget(form.city) }}
+				{{ form_errors(form.city) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label(form.address, 'Address', {'label_attr': {'class': 'col-sm-5'}}) }}
+			<div class="col-sm-7">
+				{{ form_widget(form.address) }}
+				{{ form_errors(form.address) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label(form.postCode, 'Post Code', {'label_attr': {'class': 'col-sm-5'}}) }}
+			<div class="col-sm-3">
+				{{ form_widget(form.postCode) }}
+				{{ form_errors(form.postCode) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label(form.foundationDate, 'Foundation Date', {'label_attr': {'class': 'col-sm-5'}}) }}
+			<div class="col-sm-7">
+				{{ form_widget(form.foundationDate) }}
+				{{ form_errors(form.foundationDate) }}
+			</div>
+		</div>
+		<div class="form-group">
+			</br>
+			<div class="col-sm-3 col-sm-offset-4">
+				{{ form_widget(form.send, {'attr': {'class': 'btn-primary'}, 'label': 'Sign Up'}) }}
+				
+			</div>
+		</div>
+		</div>
+		{{ form_end(form) }}
+	</div>
+	</div>
+  </div>
+  </div>
+ </div>
+</div>
+</div>
+{% endblock %}

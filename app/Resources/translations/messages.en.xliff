@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="welcome">
+                <source>welcome</source>
+                <target>Welcome to Squash Connection!</target>
+            </trans-unit>
+            <trans-unit id="welcome.content">
+                <source>welcome.content</source>
+                <target>Are you tired of playing against the same people over and over? Sign up and start playing against new players whenever you want.</target>
+            </trans-unit>
+			
+            <trans-unit id="club.heading">
+                <source>club.heading</source>
+                <target>Club Owners</target>
+            </trans-unit>
+            <trans-unit id="club.content">
+                <source>club.content</source>
+                <target>If you are the owner of a club, sign up and other players will be able to contact the members of your club</target>
+            </trans-unit>
+            <trans-unit id="club.subscription">
+                <source>club.subscription</source>
+                <target>Sign up</target>
+            </trans-unit>
+			
+            <trans-unit id="player.heading">
+				<source>player.heading</source>
+				<target>Players</target>
+			</trans-unit>
+			<trans-unit id="player.content">
+				<source>player.content</source>
+				<target>Sign up, search a player with the same level as you and challenge him. Let's play Squash!</target>
+			</trans-unit>
+			<trans-unit id="player.subscription">
+				<source>player.subscription</source>
+				<target>Sign up</target>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>

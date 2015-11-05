@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{% endblock %}</title>
+		
+		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+{#
+	Stylesheets compiled with Assetic
+#}		
+        {% block stylesheets %}
+			{% stylesheets 
+				'css/bootstrap-social.css'
+			 	'css/bootstrap-theme.css'	
+			 	'css/bootstrap.css'	
+			 	'css/flag-icon.css'	
+			 	'css/font-awesome.css'
+			 	'css/522ed01.css'
+			 	'css/jumbotron.css'	
+			 	filter='cssrewrite' %}
+				<link rel="stylesheet" href="{{ asset_url }}" />
+			{% endstylesheets %}
+		{% endblock %}
+        
+    </head>
+    <body id="{% block body_id %}{% endblock %}">
+		{% block header %}{% endblock %}
+		{% block body %}{% endblock %}
+		{% block footer %}
+			<footer class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						</br>
+						<p class="text-center">&copy; Squash Connection Project</p>
+						<p class="text-center">
+							<a href="http://www.github.com/nestordedios/squash_connection" class="btn btn-social-icon btn-github" target="_blank">
+								<i class="fa fa-github"></i>
+							</a>
+						</p>
+					</div>
+					<div class="col-sm-4">
+						</br>
+						<p class="text-center">Follow us:</p>
+						<p class="text-center">
+						<a class="btn btn-social-icon btn-twitter" href="http://www.twitter.com" target="_blank">
+    						<i class="fa fa-twitter"></i>
+  						</a>
+						<a href="http://www.facebook.com" class="btn btn-social-icon btn-facebook" target="_blank">
+							<i class="fa fa-facebook"></i>
+						</a>
+						<a href="http://www.google.com" class="btn btn-social-icon btn-google" target="_blank">
+							<i class="fa fa-google"></i>
+						</a>
+						</p>
+					</div>
+					<div class="col-sm-4">
+					<p class="text-center">
+					</br>
+					<small>
+						<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+							<img alt="Licencia de Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" />
+						</a>
+						<br />
+						<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Sound" property="dct:title" rel="dct:type">
+							Squash Connection
+						</span> 
+						by 
+						<span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">
+							Néstor de Dios Fernandez
+						</span> 
+						is licensed under a 
+						<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+							Creative Commons Reconocimiento-NoComercial-SinObraDerivada 4.0 Internacional License
+						</a>
+						.
+					</small>
+					</p>
+					</div>
+				</div>
+				</div>
+			</footer>
+		{% endblock %}
+{#
+	Including Javascripts with Assetic
+#}
+        {% block javascripts %}
+			{% javascripts 
+				'js/jquery.js' 
+				'js/bootstrap.js'
+				'js/dd00e43.js'
+			%}
+				<script src="{{ asset_url }}"></script>
+			{% endjavascripts %}	
+		{% endblock %}
+    </body>
+</html>
