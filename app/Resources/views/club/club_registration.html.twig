@@ -31,7 +31,7 @@
 	<div class="form_signup">
 		{{ form_start(form, {'method': 'POST', 'attr': {'novalidate': 'novalidate'}}) }}
 		<div id="club_SignUp">
-		<div class="form-group {% if not form.email.vars.valid %}has-error{% else %}has-success{% endif %}">
+		<div class="form-group {% if not form.email.vars.valid %}has-error{% endif %}">
 			{{ form_label(form.email, 'Email', {'label_attr': {'class': 'col-sm-5'}}) }}
 			<div class="col-sm-7">
 				{{ form_widget(form.email) }}
@@ -45,63 +45,63 @@
 				{{ form_errors(form.password) }}
 			</div>
 		</div>
-		<div class="form-group {% if not form.clubName.vars.valid %}has-error{% else %}has-success{% endif %}">
+		<div class="form-group {% if not form.clubName.vars.valid %}has-error{% endif %}">
 			{{ form_label(form.clubName, 'Club Name', {'label_attr': {'class': 'col-sm-5'}}) }}
 			<div class="col-sm-7">
 				{{ form_widget(form.clubName) }}
 				{{ form_errors(form.clubName) }}
 			</div>
 		</div>
-		<div class="form-group {% if not form.amountCourts.vars.valid %}has-error{% else %}has-success{% endif %}">
+		<div class="form-group {% if not form.amountCourts.vars.valid %}has-error{% endif %}">
 			{{ form_label(form.amountCourts, 'Amount of Courts', {'label_attr': {'class': 'col-sm-5'}}) }}
 			<div class="col-sm-2">
 				{{ form_widget(form.amountCourts) }}
 			</div>
 			<div class="col-sm-7 col-sm-offset-5">{{ form_errors(form.amountCourts) }}</div>
 		</div>
-		<div class="form-group {% if not form.ownerName.vars.valid %}has-error{% else %}has-success{% endif %}">
+		<div class="form-group {% if not form.ownerName.vars.valid %}has-error{% endif %}">
 			{{ form_label(form.ownerName, 'Owner Name', {'label_attr': {'class': 'col-sm-5'}}) }}
 			<div class="col-sm-7">
 				{{ form_widget(form.ownerName) }}
 				{{ form_errors(form.ownerName) }}
 			</div>
 		</div>
-		<div class="form-group {% if not form.ownerLastName.vars.valid %}has-error{% else %}has-success{% endif %}">
+		<div class="form-group {% if not form.ownerLastName.vars.valid %}has-error{% endif %}">
 			{{ form_label(form.ownerLastName, 'Owner Last Name', {'label_attr': {'class': 'col-sm-5'}}) }}
 			<div class="col-sm-7">
 				{{ form_widget(form.ownerLastName) }}
 				{{ form_errors(form.ownerLastName) }}
 			</div>
 		</div>
-		<div class="form-group {% if not form.country.vars.valid %}has-error{% else %}has-success{% endif %}">
+		<div class="form-group {% if not form.country.vars.valid %}has-error{% endif %}">
 			{{ form_label(form.country, 'Country', {'label_attr': {'class': 'col-sm-5'}}) }}
 			<div class="col-sm-7">
 				{{ form_widget(form.country) }}
 				{{ form_errors(form.country) }}
 			</div>
 		</div>
-		<div class="form-group {% if not form.city.vars.valid %}has-error{% else %}has-success{% endif %}">
+		<div class="form-group {% if not form.city.vars.valid %}has-error{% endif %}">
 			{{ form_label(form.city, 'City', {'label_attr': {'class': 'col-sm-5'}}) }}
 			<div class="col-sm-7">
 				{{ form_widget(form.city) }}
 				{{ form_errors(form.city) }}
 			</div>
 		</div>
-		<div class="form-group {% if not form.address.vars.valid %}has-error{% else %}has-success{% endif %}">
+		<div class="form-group {% if not form.address.vars.valid %}has-error{% endif %}">
 			{{ form_label(form.address, 'Address', {'label_attr': {'class': 'col-sm-5'}}) }}
 			<div class="col-sm-7">
 				{{ form_widget(form.address) }}
 				{{ form_errors(form.address) }}
 			</div>
 		</div>
-		<div class="form-group {% if not form.postCode.vars.valid %}has-error{% else %}has-success{% endif %}">
+		<div class="form-group {% if not form.postCode.vars.valid %}has-error{% endif %}">
 			{{ form_label(form.postCode, 'Post Code', {'label_attr': {'class': 'col-sm-5'}}) }}
 			<div class="col-sm-3">
 				{{ form_widget(form.postCode) }}
 			</div>
 			<div class="col-sm-7 col-sm-offset-5">{{ form_errors(form.postCode) }}</div>
 		</div>
-		<div class="form-group {% if not form.foundationDate.vars.valid %}has-error{% else %}has-success{% endif %}">
+		<div class="form-group {% if not form.foundationDate.vars.valid %}has-error{% endif %}">
 			{{ form_label(form.foundationDate, 'Foundation Date', {'label_attr': {'class': 'col-sm-5'}}) }}
 			<div class="col-sm-7">
 				{{ form_widget(form.foundationDate) }}

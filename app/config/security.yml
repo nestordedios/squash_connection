@@ -29,7 +29,6 @@ security:
                 login_path: /login
                 check_path: /login_check
                 default_target_path: user_homepage
-                failure_path: login_failure
             logout:
                 path: /logout
                 target: homepage				
