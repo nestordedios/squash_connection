@@ -32,14 +32,14 @@ class Usuario implements UserInterface, \Serializable
 	
 	/**
 	 * @ORM\Column(name="email", type="string")
-     * @Assert\Email
-     * @Assert\NotBlank
+     * @Assert\Email()
+     * @Assert\NotBlank()
 	 */
 	protected $email;
 	
 	/**
 	 * @ORM\Column(name="password", type="string")
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
 	 */
 	protected $password;
 	
