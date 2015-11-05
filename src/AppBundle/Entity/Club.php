@@ -3,6 +3,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -19,56 +20,70 @@ class Club implements UserInterface, \Serializable
 	
 	/**
 	 * @ORM\Column(type="string")
+     * @Assert\NotBlank()
 	 */
 	protected $clubName;
 	
 	/**
 	 * @ORM\Column(type="string")
+     * @Assert\NotBlank()
 	 */
 	protected $ownerName;
 	
 	/**
 	 * @ORM\Column(type="string")
+     * @Assert\NotBlank()
 	 */
 	protected $ownerLastName;
 	
 	/**
 	 * @ORM\Column(type="string", unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email
 	 */
 	protected $email;
 	
 	/**
 	 * @ORM\Column(type="date")
+     * @Assert\Date()
 	 */
 	protected $foundationDate;
 	
 	/**
 	 * @ORM\Column(type="string") 
+     * @Assert\NotBlank()
 	 */
 	 protected $password;
 	 
 	 /**
 	  * @ORM\Column(type="string")
+      * @Assert\Country()
 	  */
 	 protected $country;
 	  
 	 /**
 	  * @ORM\Column(type="string")
+      * @Assert\NotBlank()
 	  */
 	 protected $city;
 	  
 	 /**
 	   * @ORM\Column(type="string")
+       * @Assert\NotBlank()
+       * @Assert\Length(min=4, max=6)
 	   */
 	 protected $postCode;
 		
      /**
 	   * @ORM\Column(type="string")
+       * @Assert\NotBlank()
 	   */
 	 protected $address;
 		 
 	 /**
 	  * @ORM\Column(type="string")
+      * @Assert\Type(type="integer")
+      * @Assert\NotBlank()
 	  */
 	 protected $amountCourts;
 

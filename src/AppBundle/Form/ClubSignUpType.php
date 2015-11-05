@@ -20,7 +20,7 @@ class ClubSignUpType extends AbstractType
 			->add('city', 'text')
 			->add('address', 'text')
 			->add('postCode', 'text')
-			->add('foundationDate', 'birthday')
+			->add('foundationDate', 'birthday', array('format' => 'ddMMyyyy'))
 			->add('send', 'submit')
 		;
 	}

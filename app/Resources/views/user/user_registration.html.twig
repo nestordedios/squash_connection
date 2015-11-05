@@ -27,7 +27,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="form_signup">
-								{{ form_start(form, {'method': 'POST', 'attr': {'novalidate': 'novalidate', }}) }}
+								{{ form_start(form, {'method': 'POST', 'attr': {'novalidate': 'novalidate'}}) }}
 								<div id="user_SignUp">
 									<div class="form-group {% if not form.name.vars.valid %}has-error{% else %}has-success{% endif %}">
 										{{ form_label(form.name, 'Name', {'label_attr': {'class': 'col-sm-4'}}) }}
