@@ -5,17 +5,7 @@
 {% block body_id 'user_signUp' %}
 
 {% block header %}
-	<div class="header">
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="{{ path('homepage') }}">
-						<img id="logo" src="{{ asset('images/logotipo.png') }}">
-					</a>
-				</div>
-			</div>
-		</nav>
-	</div>
+	{% include 'default/_header_general_pages.html.twig' %}
 {% endblock %}
 
 {% block body %}
