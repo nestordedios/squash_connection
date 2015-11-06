@@ -81,8 +81,8 @@ class Club implements UserInterface, \Serializable
 	 protected $address;
 		 
 	 /**
-	  * @ORM\Column(type="string")
-      * @Assert\Type(type="integer")
+	  * @ORM\Column(type="integer")
+      * @Assert\Regex("/\d/")
       * @Assert\NotBlank()
 	  */
 	 protected $amountCourts;

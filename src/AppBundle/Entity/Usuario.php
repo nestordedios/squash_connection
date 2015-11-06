@@ -31,7 +31,7 @@ class Usuario implements UserInterface, \Serializable
 	protected $lastName;
 	
 	/**
-	 * @ORM\Column(name="email", type="string")
+	 * @ORM\Column(name="email", type="string", unique=true)
      * @Assert\Email()
      * @Assert\NotBlank()
 	 */

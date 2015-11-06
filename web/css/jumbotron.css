@@ -58,3 +58,8 @@ body{
 .login_box{
 	margin-top: 40px; 
 }
+
+
+table tbody td{
+	text-align: center;
+}
