@@ -26,22 +26,25 @@ body{
   background-size: cover;
 }
 
-.footer{
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 121px;
-	background-color: black;
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 487px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 329px;
+  background-color: black;
 }
 
-.footer p{
-	color: white;
-}
-
-.footer a img{
-	border-style: solid;
-	border-color: white;
-}
 
 #user_signUp .content{
 	margin-top: 40px;
