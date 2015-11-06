@@ -27,14 +27,29 @@ class ClubController extends Controller
 			$encoded = $encoder->encodePassword($club, $plainPassword);
 
 			$club->setPassword($encoded);
-			$club->sertStatus("ROLE_CLUB");
+			$club->setStatus("ROLE_CLUB");
 			
-			//Saving User in the DataBase
-			$em = $this->getDoctrine()->getManager();
-			$em->persist($club);
-			$em->flush();
-			
-			return $this->render('club/correct_club_registration.html.twig');
+			try {
+				//Saving User in the DataBase
+				$em = $this->getDoctrine()->getManager();
+				$em->persist($club);
+				$em->flush();
+
+				$this->addFlash(
+					'notice',
+					'Well done! you completed your registration correctly. Welcome to Squash Connection!'
+					);
+
+				return $this->render('default/submitted_registration.html.twig');
+
+			} catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
+				$this->addFlash(
+					'error',
+					'Something went wrong! It seems that someone is already using that email.'
+					);
+				
+				return $this->render('default/submitted_registration.html.twig');
+			}
 		}
 		
 		return $this->render('club/club_registration.html.twig', array('form' => $form->createView()));

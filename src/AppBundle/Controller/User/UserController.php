@@ -30,12 +30,30 @@ class UserController extends Controller
 			$user->setPassword($encoded);
 			$user->setStatus("ROLE_USER");
 			
-			//Saving User in the DataBase
-			$em = $this->getDoctrine()->getManager();
-			$em->persist($user);
-			$em->flush();
+			try {
+				//Saving User in the DataBase
+				$em = $this->getDoctrine()->getManager();
+				$em->persist($user);
+				$em->flush();
 
-			return $this->render('user/correct_user_registration.html.twig');
+				$this->addFlash(
+					'notice',
+					'Well done! you completed your registration correctly. Welcome to Squash Connection!'
+					);
+
+				return $this->render('default/submitted_registration.html.twig');
+
+			} catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
+				$this->addFlash(
+					'error',
+					'Something went wrong! It seems that someone is already using that email.'
+					);
+
+				return $this->render('default/submitted_registration.html.twig');
+				
+			}
+			
+			
 		}
 		
 		return $this->render('user/user_registration.html.twig', array('form' => $form->createView(), 'request' => $request));
