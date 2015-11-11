@@ -5,6 +5,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormEvents;
+use Doctrine\ORM\EntityRepository;
 
 class UsuarioSignUpType extends AbstractType
 {
@@ -18,11 +19,19 @@ class UsuarioSignUpType extends AbstractType
 			->add('playingLevel', 'rating', array(
         		'label' => 'Playing Level',
         		'stars' => 5))
-			->add('gender', 'choice', array(
-				'choices' => array('m' => 'Male', 'f' => 'Female'), 
-				'expanded' => 'true',
-				))
-			->add('country', 'country')
+			->add('gender', 'entity', array(
+  				'class' => 'AppBundle:Gender',
+  				'property' => 'name',
+  				'expanded' => true
+  				))
+			->add('country', 'entity', array(
+				'placeholder' => 'Choose an option',
+  				'class' => 'AppBundle:Country',
+  				'property' => 'name',
+  				'query_builder' => function(EntityRepository $er){
+  					return $er->createQueryBuilder('c')->orderBy('c.name', 'ASC');
+  				},
+  				))
 		;
 
 		

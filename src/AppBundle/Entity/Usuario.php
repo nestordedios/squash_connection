@@ -60,13 +60,13 @@ class Usuario implements UserInterface, \Serializable
      * @ORM\ManyToOne(targetEntity="Country", inversedBy="users")
      * @ORM\JoinColumn(name="country", referencedColumnName="code")
 	 * 
-     * @Assert\Country()
+     * @Assert\NotBlank()
 	 */
 	protected $country;
 	
 	/**
 	 * @ORM\Column(name="city", type="string")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "Choose a country.")
 	 */
 	protected $city;
 	
