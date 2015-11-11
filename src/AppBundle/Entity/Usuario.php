@@ -50,13 +50,16 @@ class Usuario implements UserInterface, \Serializable
 	protected $playingLevel;
 	
 	/**
-	 * @ORM\Column(name="gender", type="string")
+	 * @ORM\ManyToOne(targetEntity="Gender", inversedBy="users")
+     * @ORM\JoinColumn(name="gender", referencedColumnName="code")
      * @Assert\NotBlank(message = "Choose a valid gender.")
 	 */
 	protected $gender;
 	
 	/**
-	 * @ORM\Column(name="country", type="string")
+     * @ORM\ManyToOne(targetEntity="Country", inversedBy="users")
+     * @ORM\JoinColumn(name="country", referencedColumnName="code")
+	 * 
      * @Assert\Country()
 	 */
 	protected $country;
