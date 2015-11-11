@@ -15,7 +15,10 @@ class UserController extends Controller
 	public function playerSignUpAction(Request $request)
 	{
 		$user = new Usuario();
-		
+		//$gender = new Gender();
+
+
+
 		$form = $this->createForm(new UsuarioSignUpType(), $user);
 		
 		$form->handleRequest($request);
@@ -29,7 +32,8 @@ class UserController extends Controller
 
 			$user->setPassword($encoded);
 			$user->setStatus("ROLE_USER");
-			
+			//$user->setGender($gender);
+
 			try {
 				//Saving User in the DataBase
 				$em = $this->getDoctrine()->getManager();
@@ -63,7 +67,14 @@ class UserController extends Controller
 	 */
 	public function playerHomepageAction(Request $request)
 	{
+		$em = $this->getDoctrine()->getManager();
+		//$query = $em->createQuery(
+		//	'Select u.name, u.lastName, u.gender, c.name, u.playingLevel from AppBundle:Usuario u, AppBundle:Country c where u.country = c.code'
+		//);
+
 		$players = $this->getDoctrine()->getRepository('AppBundle:Usuario')->findAll();
+		//$players = $query->getResult();
+
 		return $this->render('user/user_homepage.html.twig', array('players' => $players));
 	}
 }

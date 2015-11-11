@@ -29,8 +29,8 @@
 						{% for player in players %}
 							<tr>
 								<td>{{ player.name }} {{ player.lastName }}</td>
-								<td>Masculine</td>
-								<td>Argentina</td>
+								<td>{{ player.gender.name }}</td>
+								<td>{{ player.country.name }}</td>
 								<td>{{ player.playingLevel }}</td>
 								<td><span class="glyphicon glyphicon-envelope"></span></td>
 							</tr>

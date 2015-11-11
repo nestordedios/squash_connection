@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormEvents;
 
 class UsuarioSignUpType extends AbstractType
 {
@@ -14,18 +15,23 @@ class UsuarioSignUpType extends AbstractType
 			->add('lastName', 'text')
 			->add('email', 'email')
 			->add('password', 'password')
-			->add('playingLevel', 'choice', array(
-				'empty_value' => '-',
-				'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'),
-				))
+			->add('playingLevel', 'rating', array(
+        		'label' => 'Playing Level',
+        		'stars' => 5))
 			->add('gender', 'choice', array(
 				'choices' => array('m' => 'Male', 'f' => 'Female'), 
 				'expanded' => 'true',
 				))
 			->add('country', 'country')
+		;
+
+		
+
+		$builder
 			->add('city', 'text')
 			->add('send', 'submit')	
 		;
+		
 	}
 	
 	public function getName()
