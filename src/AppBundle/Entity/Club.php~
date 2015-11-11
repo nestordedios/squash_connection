@@ -1,13 +1,15 @@
 <?php
-namespace Acme\SquashBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="club")
  */
-class Club
+class Club implements UserInterface, \Serializable
 {
 	/**
 	 * @ORM\Column(type="integer")
@@ -18,59 +20,77 @@ class Club
 	
 	/**
 	 * @ORM\Column(type="string")
+     * @Assert\NotBlank()
 	 */
 	protected $clubName;
 	
 	/**
 	 * @ORM\Column(type="string")
+     * @Assert\NotBlank()
 	 */
 	protected $ownerName;
 	
 	/**
 	 * @ORM\Column(type="string")
+     * @Assert\NotBlank()
 	 */
 	protected $ownerLastName;
 	
 	/**
-	 * @ORM\Column(type="string")
+	 * @ORM\Column(type="string", unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email
 	 */
 	protected $email;
 	
 	/**
 	 * @ORM\Column(type="date")
+     * @Assert\Date()
 	 */
 	protected $foundationDate;
 	
 	/**
 	 * @ORM\Column(type="string") 
+     * @Assert\NotBlank()
 	 */
 	 protected $password;
 	 
 	 /**
 	  * @ORM\Column(type="string")
+      * @Assert\Country()
 	  */
 	 protected $country;
 	  
 	 /**
 	  * @ORM\Column(type="string")
+      * @Assert\NotBlank()
 	  */
 	 protected $city;
 	  
 	 /**
 	   * @ORM\Column(type="string")
+       * @Assert\NotBlank()
+       * @Assert\Length(min=4, max=6)
 	   */
 	 protected $postCode;
 		
      /**
 	   * @ORM\Column(type="string")
+       * @Assert\NotBlank()
 	   */
 	 protected $address;
 		 
 	 /**
-	  * @ORM\Column(type="string")
+	  * @ORM\Column(type="integer")
+      * @Assert\Regex("/\d/")
+      * @Assert\NotBlank()
 	  */
 	 protected $amountCourts;
 
+     /**
+     * @ORM\Column(name="status", type="string")
+     */
+     protected $status;
 
     /**
      * Get id
@@ -344,5 +364,69 @@ class Club
     public function getAmountCourts()
     {
         return $this->amountCourts;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return Usuario
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    public function getUserName()
+    {
+        return $this->email;
+    }
+    
+    public function getSalt()
+    {
+        return null;
+    }
+    
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+    
+    public function eraseCredentials()
+    {
+        
+    }
+    
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->email,
+            $this->password,
+            //$this->salt
+        ));
+    }
+    
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->email,
+            $this->password,
+            //$this->salt
+        )= unserialize($serialized);
     }
 }
