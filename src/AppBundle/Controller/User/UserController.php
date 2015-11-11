@@ -77,5 +77,13 @@ class UserController extends Controller
 
 		return $this->render('user/user_homepage.html.twig', array('players' => $players));
 	}
+
+	/**
+	* @Route("/user/challenge/{slug}", name="challenge")
+	*/
+	public function challengeAction(Request $request, $slug)
+	{
+		return $this->render('user/user_challenge.html.twig', array('slug' => $slug));
+	}
 }
 ?>
