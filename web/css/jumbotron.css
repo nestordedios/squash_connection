@@ -66,3 +66,7 @@ body {
 table tbody td{
 	text-align: center;
 }
+
+table thead th{
+  text-align: center;
+}
