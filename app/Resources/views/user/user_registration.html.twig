@@ -49,6 +49,14 @@
 											{{ form_errors(form.password) }}
 										</div>
 									</div>
+
+									<div class="form-group {% if not form.password.vars.valid %}has-error{% endif %}">
+										{{ form_label(form.club, 'Favourite Club', {'label_attr': {'class': 'col-sm-4'}}) }}
+										<div class="col-sm-7">
+											{{ form_widget(form.club) }}
+											{{ form_errors(form.club) }}
+										</div>
+									</div>
 									
 									<div class="form-group {% if not form.playingLevel.vars.valid %}has-error{% endif %}">
 										{{ form_label(form.playingLevel, 'Playing Level', {'label_attr': {'class': 'col-sm-4'}}) }}

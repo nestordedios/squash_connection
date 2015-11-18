@@ -41,6 +41,7 @@
 						{{ form_widget(form.search, {'attr': {'class': 'btn btn-primary'}}) }}						
 						{{ form_end(form) }}
 					</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -61,12 +62,12 @@
 							{% if player.id != app.user.id %}
 							<tr>
 								<td>{{ player.name }} {{ player.lastName }}</td>
-								<td>{{ player.gender.name }}</td>
-								<td>{{ player.country.name }}</td>
+								<td>{{ player.gender }}</td>
+								<td>{{ player.country }}</td>
 								<td>{{ player.playingLevel|rating(player.playingLevel, 'fa-lg') }}</td>
 								<td><a class="btn btn-success" href="{{ path('challenge', {'slug': player.id}) }}">Challenge</a></td>
 							</tr>
-							{% endif %}
+						{% endif %}
 						{% endfor %}
 					</tbody>	
 				</table>

@@ -1,0 +1,84 @@
+<form novalidate="novalidate" action="" method="post" name="form" class="form-inline">
+						<div class="form-group">
+							<label for="form_country" class="control-label required">Country: </label>
+								<select class="form-control" required="required" name="form[country]" id="form_country">
+									<option selected="selected" value="">Choose a country</option>            
+									<option value="AF">Afghanistan</option>            
+									<option value="AX">Aland Islands</option>            
+									<option value="AL">Albania</option>            
+									<option value="DZ">Algeria</option>            
+									<option value="AS">American Samoa</option>            
+									<option value="AD">Andorra</option>            
+									<option value="AO">Angola</option>            
+								</select>
+						</div>
+						<div class="form-group">
+							<label for="form_club" class="control-label required">Club:</label>
+								<select class="form-control" required="required" name="form[club]" id="form_club">
+									<option selected="selected" value="">Choose a club</option>            
+									<option value="1">Playa Park Club</option>            
+									<option value="2">Houtrust</option>            
+									<option value="3">Ockenburgh</option>
+								</select>
+						</div>
+						<label class="control-label required">Gender:</label>
+						<label class="radio-inline required">
+  							<input type="radio" id="form_gender_0" name="form[gender]" required="required" value="f"> Female
+						</label>
+						<label class="radio-inline required">
+ 							<input type="radio" id="form_gender_1" name="form[gender]" required="required" value="m"> Male </label>
+						<label for="form_level" class="control-label required">Level:</label>  
+						<label class="">
+							<div class="rating">
+								<div class="rating-well">
+									<input type="text" id="form_level" name="form[level]" required="required" class="rating form-control">
+										<div id="rating_star_5" class="star" data-value="5"></div>
+										<div id="rating_star_4" class="star" data-value="4"></div>
+										<div id="rating_star_3" class="star" data-value="3"></div>
+										<div id="rating_star_2" class="star" data-value="2"></div>
+										<div id="rating_star_1" class="star" data-value="1"></div>
+								</div>
+							</div>
+						</label>
+						<button type="submit" id="form_Search" name="form[Search]" class="btn-primary btn">Search</button>
+						<input type="hidden" value="INUyVxEtRnRukRajod8BobYWKJMHBXkRzC2YPISe5t8" class="form-control" name="form[_token]" id="form__token">
+</form>
+
+
+<div class="col-sm-2">
+										Foto
+									</div>
+									<div class="col-sm-4">
+										<p><strong>Name:</strong> {{ player.name }} {{ player.lastName }}. </p>
+									</div>
+									<div class="col-sm-3">
+										<p><strong>Gender:</strong> {{ player.gender.name }}.</p>
+									</div>
+									<div class="col-sm-3">
+										<strong>Level:</strong>{{ player.playingLevel|rating(player.playingLevel, 'fa-lg') }}
+									</div>
+								</div>
+								<div class="col-sm-10 col-sm-offset-2">
+									<div class="col-sm-5">
+										<p><strong>Favourite Club:</strong> {{ player.club }}</p>
+									</div>
+									<div class="col-sm-3">
+										<p><strong>Win:</strong> 3 matches.</p>
+									</div>
+									<div class="col-sm-4">
+										<p><strong>Lost:</strong> 2 matches.</p>
+									</div>
+								</div>
+								<div class="col-sm-10 col-sm-offset-2">
+									<div class="progress">
+									  <div class="progress-bar progress-bar-success" style="width: 60%">
+									    60%
+									  </div>
+									  <div class="progress-bar progress-bar-danger" style="width: 40%">
+									    40%
+									  </div>
+									</div>
+								</div>
+								<hr>
+								<div class="col-sm-12">
+									Formulario

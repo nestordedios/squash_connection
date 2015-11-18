@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -91,6 +92,19 @@ class Club implements UserInterface, \Serializable
      * @ORM\Column(name="status", type="string")
      */
      protected $status;
+
+     /**
+     * @ORM\OneToMany(targetEntity="Usuario", mappedBy="gender")
+     */
+    private $users;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -428,5 +442,39 @@ class Club implements UserInterface, \Serializable
             $this->password,
             //$this->salt
         )= unserialize($serialized);
+    }
+
+    /**
+     * Add user
+     *
+     * @param \AppBundle\Entity\Usuario $user
+     *
+     * @return Club
+     */
+    public function addUser(\AppBundle\Entity\Usuario $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \AppBundle\Entity\Usuario $user
+     */
+    public function removeUser(\AppBundle\Entity\Usuario $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }

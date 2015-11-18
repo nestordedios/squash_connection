@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -69,11 +70,23 @@ class Usuario implements UserInterface, \Serializable
      * @Assert\NotBlank(message = "Choose a country.")
 	 */
 	protected $city;
+
+    /**
+    * @Assert\NotBlank(message = "Choose a club.")
+    */
+    protected $club;
 	
 	/**
 	 * @ORM\Column(name="status", type="string")
 	 */
 	 protected $status;
+
+     /**
+     * @ORM\OneToMany(targetEntity="Challenge", mappedBy="player1")
+     */
+     protected $challenges;
+
+
 
 	public function getUserName()
 	{
@@ -339,5 +352,70 @@ class Usuario implements UserInterface, \Serializable
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set club
+     *
+     * @param string $club
+     *
+     * @return Usuario
+     */
+    public function setClub($club)
+    {
+        $this->club = $club;
+
+        return $this;
+    }
+
+    /**
+     * Get club
+     *
+     * @return string
+     */
+    public function getClub()
+    {
+        return $this->club;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->challenges = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add challenge
+     *
+     * @param \AppBundle\Entity\Challenge $challenge
+     *
+     * @return Usuario
+     */
+    public function addChallenge(\AppBundle\Entity\Challenge $challenge)
+    {
+        $this->challenges[] = $challenge;
+
+        return $this;
+    }
+
+    /**
+     * Remove challenge
+     *
+     * @param \AppBundle\Entity\Challenge $challenge
+     */
+    public function removeChallenge(\AppBundle\Entity\Challenge $challenge)
+    {
+        $this->challenges->removeElement($challenge);
+    }
+
+    /**
+     * Get challenges
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChallenges()
+    {
+        return $this->challenges;
     }
 }

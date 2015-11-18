@@ -1,4 +1,4 @@
-<?php
+<?php 
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
@@ -7,25 +7,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormEvents;
 use Doctrine\ORM\EntityRepository;
 
-class UsuarioSignUpType extends AbstractType
+class SearchPlayersType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('name', 'text')
-			->add('lastName', 'text')
-			->add('email', 'email')
-			->add('password', 'password')
-			->add('playingLevel', 'rating', array(
-        		'label' => 'Playing Level',
-        		'stars' => 5))
-			->add('gender', 'entity', array(
-  				'class' => 'AppBundle:Gender',
-  				'property' => 'name',
-  				'expanded' => true
-  				))
 			->add('country', 'entity', array(
-				'placeholder' => 'Choose an option',
+				'placeholder' => 'Choose a country',
   				'class' => 'AppBundle:Country',
   				'property' => 'name',
   				'query_builder' => function(EntityRepository $er){
@@ -33,30 +21,34 @@ class UsuarioSignUpType extends AbstractType
   				},
   				))
 			->add('club', 'entity', array(
-				'placeholder' => 'Choose an option',
+				'placeholder' => 'Choose a club',
   				'class' => 'AppBundle:Club',
-  				'property' => 'clubname'
+  				'property' => 'name',
+  				'query_builder' => function(EntityRepository $er){
+  					return $er->createQueryBuilder('c');
+  				},
   				))
-		;
-
-		
-
-		$builder
-			->add('city', 'text')
-			->add('send', 'submit')	
+			->add('gender', 'entity', array(
+  				'class' => 'AppBundle:Gender',
+  				'property' => 'name',
+  				'expanded' => true
+  				))
+			->add('level', 'rating', array(
+        		'label' => 'Playing Level',
+        		'stars' => 5))
 		;
 		
 	}
 	
 	public function getName()
 	{
-		return 'UsuarioSignUp';
+		return 'SearchPlayer';
 	}
 	
 	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
-			'data_class' => 'AppBundle\Entity\Usuario'
+			
 		));
 	}
 }
