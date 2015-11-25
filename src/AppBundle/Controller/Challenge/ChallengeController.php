@@ -20,7 +20,7 @@ class ChallengeController extends Controller
 	*/
 	public function challengeAction(Request $request, $slug)
 	{
-		$player = $this->getDoctrine()->getRepository('AppBundle:Usuario')->find($slug);
+		$player = $this->getDoctrine()->getRepository('AppBundle:User')->find($slug);
 		$challenge = new Challenge();
 		$user = $this->getUser();
 		$tokenStorage = $this->container->get('security.token_storage');

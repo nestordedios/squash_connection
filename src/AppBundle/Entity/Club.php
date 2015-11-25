@@ -94,7 +94,7 @@ class Club implements UserInterface, \Serializable
      protected $status;
 
      /**
-     * @ORM\OneToMany(targetEntity="Usuario", mappedBy="club")
+     * @ORM\OneToMany(targetEntity="User", mappedBy="club")
      */
     private $users;
 
@@ -385,7 +385,7 @@ class Club implements UserInterface, \Serializable
      *
      * @param string $status
      *
-     * @return Usuario
+     * @return User
      */
     public function setStatus($status)
     {
@@ -447,11 +447,11 @@ class Club implements UserInterface, \Serializable
     /**
      * Add user
      *
-     * @param \AppBundle\Entity\Usuario $user
+     * @param \AppBundle\Entity\User $user
      *
      * @return Club
      */
-    public function addUser(\AppBundle\Entity\Usuario $user)
+    public function addUser(\AppBundle\Entity\User $user)
     {
         $this->users[] = $user;
 
@@ -461,9 +461,9 @@ class Club implements UserInterface, \Serializable
     /**
      * Remove user
      *
-     * @param \AppBundle\Entity\Usuario $user
+     * @param \AppBundle\Entity\User $user
      */
-    public function removeUser(\AppBundle\Entity\Usuario $user)
+    public function removeUser(\AppBundle\Entity\User $user)
     {
         $this->users->removeElement($user);
     }

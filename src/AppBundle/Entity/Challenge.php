@@ -19,13 +19,15 @@ class Challenge
 
 	/**
 	* @ORM\Column(name="player1", type="integer")
-	* @ORM\ManyToOne(targetEntity="Usuario")
+	* @ORM\OneToOne(targetEntity="User")
+    * @ORM\JoinColumn(name="player1", referencedColumnName="id")
 	*/
 	protected $player1;
 
 	/**
 	* @ORM\Column(name="player2", type="integer")
-	* @ORM\ManyToOne(targetEntity="Usuario")
+	* @ORM\OneToOne(targetEntity="User")
+    * @ORM\JoinColumn(name="player2", referencedColumnName="id")
 	*/
 	protected $player2;
 
@@ -41,7 +43,7 @@ class Challenge
 	protected $date;
 
 	/**
-	* @ORM\Column(name="time", type="datetime")
+	* @ORM\Column(name="time", type="time")
 	*/
 	protected $time;
 
@@ -60,15 +62,7 @@ class Challenge
 	*/
 	protected $status;
 
-    /**
-    * @ORM\OneToMany(targetEntity="Usuario", mappedBy="challenges")
-    */
-    protected $users;
-
-    public function __construct()
-    {
-        $this->users = new ArrayCollection();
-    }
+    
 
 
 
@@ -277,11 +271,11 @@ class Challenge
     /**
      * Add user
      *
-     * @param \AppBundle\Entity\Usuario $user
+     * @param \AppBundle\Entity\User $user
      *
      * @return Challenge
      */
-    public function addUser(\AppBundle\Entity\Usuario $user)
+    public function addUser(\AppBundle\Entity\User $user)
     {
         $this->users[] = $user;
 
@@ -291,9 +285,9 @@ class Challenge
     /**
      * Remove user
      *
-     * @param \AppBundle\Entity\Usuario $user
+     * @param \AppBundle\Entity\User $user
      */
-    public function removeUser(\AppBundle\Entity\Usuario $user)
+    public function removeUser(\AppBundle\Entity\User $user)
     {
         $this->users->removeElement($user);
     }

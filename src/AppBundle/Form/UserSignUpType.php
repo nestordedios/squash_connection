@@ -7,7 +7,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormEvents;
 use Doctrine\ORM\EntityRepository;
 
-class UsuarioSignUpType extends AbstractType
+class UserSignUpType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
@@ -50,13 +50,13 @@ class UsuarioSignUpType extends AbstractType
 	
 	public function getName()
 	{
-		return 'UsuarioSignUp';
+		return 'UserSignUp';
 	}
 	
 	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
-			'data_class' => 'AppBundle\Entity\Usuario'
+			'data_class' => 'AppBundle\Entity\User'
 		));
 	}
 }

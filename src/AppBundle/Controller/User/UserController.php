@@ -4,8 +4,8 @@ namespace AppBundle\Controller\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Form\UsuarioSignUpType;
-use AppBundle\Entity\Usuario;
+use AppBundle\Form\UserSignUpType;
+use AppBundle\Entity\User;
 use Doctrine\ORM\EntityRepository;
 
 class UserController extends Controller
@@ -15,17 +15,17 @@ class UserController extends Controller
 	 */	
 	public function playerSignUpAction(Request $request)
 	{
-		$user = new Usuario();
+		$user = new User();
 		//$gender = new Gender();
 
-		$form = $this->createForm(new UsuarioSignUpType(), $user);
+		$form = $this->createForm(new UserSignUpType(), $user);
 		
 		$form->handleRequest($request);
 		
 		if($form->isValid())
 		{
 			//Encoding User Password
-			$plainPassword = $request->request->get('UsuarioSignUp')['password'];
+			$plainPassword = $request->request->get('UserSignUp')['password'];
 			$encoder = $this->container->get('security.password_encoder');
 			$encoded = $encoder->encodePassword($user, $plainPassword);
 
@@ -111,13 +111,13 @@ class UserController extends Controller
 			if($data['country'] != null){
 				$country = $data['country']->getCode();
 				if($dql == ''){
-					$dql = "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:Usuario u, AppBundle:Country c, AppBundle:Gender g where c.code = :country and u.country = c.code and g.code = u.gender";
+					$dql = "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:User u, AppBundle:Country c, AppBundle:Gender g where c.code = :country and u.country = c.code and g.code = u.gender";
 				}
 			}
 			if($data['club'] != null){
 				$club .= $data['club']->getClubName();
 				if($dql == ''){
-					$dql .= "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:Usuario u, AppBundle:Country c, AppBundle:Gender g where u.club = :club and u.country = c.code and g.code = u.gender";
+					$dql .= "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:User u, AppBundle:Country c, AppBundle:Gender g where u.club = :club and u.country = c.code and g.code = u.gender";
 				}else{
 					$dql .= " and u.club = :club";
 				}
@@ -125,7 +125,7 @@ class UserController extends Controller
 			if($data['gender'] != null){
 				$gender = $data['gender']->getCode();
 				if($dql == ''){
-					$dql .= "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:Usuario u, AppBundle:Country c, AppBundle:Gender g where g.code = :gender and u.country = c.code and g.code = u.gender";
+					$dql .= "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:User u, AppBundle:Country c, AppBundle:Gender g where g.code = :gender and u.country = c.code and g.code = u.gender";
 				}else{
 					$dql .= " and g.code = :gender";
 				}
@@ -133,14 +133,14 @@ class UserController extends Controller
 			if($data['level'] != null){
 				$level = round($data['level']);
 				if($dql == ''){
-					$dql .= "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:Usuario u, AppBundle:Country c, AppBundle:Gender g where u.playingLevel = :level and u.country = c.code and g.code = u.gender";
+					$dql .= "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:User u, AppBundle:Country c, AppBundle:Gender g where u.playingLevel = :level and u.country = c.code and g.code = u.gender";
 				}else{
 					$dql .= " and u.playingLevel = :level";
 				}
 			}
 
 			if($dql == ''){
-				$dql = "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:Usuario u, AppBundle:Country c, AppBundle:Gender g where u.country = c.code and g.code = u.gender";
+				$dql = "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:User u, AppBundle:Country c, AppBundle:Gender g where u.country = c.code and g.code = u.gender";
 			}
 
 			$query = $em->createQuery($dql);
@@ -163,7 +163,7 @@ class UserController extends Controller
 			return $this->render('user/searched_players_list.html.twig', array('form' => $form->createView(), 'data' => $data, 'query' => $query, 'players' => $players));
 		}
 
-		$players = $this->getDoctrine()->getRepository('AppBundle:Usuario')->findAll();
+		$players = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
 
 		return $this->render('user/user_homepage.html.twig', array('form' => $form->createView(), 'players' => $players));
 	}

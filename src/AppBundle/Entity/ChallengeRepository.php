@@ -15,9 +15,12 @@ class ChallengeRepository extends \Doctrine\ORM\EntityRepository
 	{
 		return $this->getEntityManager()
 			->createQuery(
-				"Select u.name, u.lastName, c.clubName, ch.date, ch.time, ch.id, ch.status 
-				from AppBundle:Usuario u, AppBundle:Club c, AppBundle:Challenge ch 
-				where ch.player2 = $userId and c.id = ch.club and u.id = ch.player2 and ch.status is NULL"
+				"Select ch.id, c.clubName, ch.date, ch.time, p1.name as player1Name, p1.lastName as player1lastName, p2.name as player2Name, p2.lastName as player2lastName 
+				FROM AppBundle:Challenge as ch 
+				join AppBundle:User as p1 with p1.id = ch.player1 
+				join AppBundle:User as p2 with p2.id = ch.player2 
+				join AppBundle:Club as c with c.id = ch.club
+				where ch.status is NULL"
 			)
 			->getResult();
 	}
@@ -27,7 +30,7 @@ class ChallengeRepository extends \Doctrine\ORM\EntityRepository
 		return $this->getEntityManager()
 			->createQuery(
 				"Select u.name, u.lastName, c.clubName, ch.date, ch.time, ch.id, ch.status 
-				from AppBundle:Usuario u, AppBundle:Club c, AppBundle:Challenge ch 
+				from AppBundle:User u, AppBundle:Club c, AppBundle:Challenge ch 
 				where ch.player1 = $userId and c.id = ch.club and u.id = ch.player2"
 			)
 			->getResult();

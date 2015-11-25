@@ -2,7 +2,7 @@
 # http://symfony.com/doc/current/book/security.html
 security:
     encoders:
-        AppBundle\Entity\Usuario:
+        AppBundle\Entity\User:
             algorithm: bcrypt
         AppBundle\Entity\Club:
             algorithm: bcrypt    
@@ -10,7 +10,7 @@ security:
     providers:
         our_db_provider:
             entity:
-                class: AppBundle:Usuario
+                class: AppBundle:User
                 property: email
         in_memory:
             memory: ~

@@ -22,7 +22,7 @@ class Country
 	protected $name;
 
 	/**
-	* @ORM\OneToMany(targetEntity="Usuario", mappedBy="country")
+	* @ORM\OneToMany(targetEntity="User", mappedBy="country")
 	*/
 	protected $users;
 
@@ -83,11 +83,11 @@ class Country
     /**
      * Add user
      *
-     * @param \AppBundle\Entity\Usuario $user
+     * @param \AppBundle\Entity\User $user
      *
      * @return Country
      */
-    public function addUser(\AppBundle\Entity\Usuario $user)
+    public function addUser(\AppBundle\Entity\User $user)
     {
         $this->users[] = $user;
 
@@ -97,9 +97,9 @@ class Country
     /**
      * Remove user
      *
-     * @param \AppBundle\Entity\Usuario $user
+     * @param \AppBundle\Entity\User $user
      */
-    public function removeUser(\AppBundle\Entity\Usuario $user)
+    public function removeUser(\AppBundle\Entity\User $user)
     {
         $this->users->removeElement($user);
     }

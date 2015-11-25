@@ -19,13 +19,15 @@ class Challenge
 
 	/**
 	* @ORM\Column(name="player1", type="integer")
-	* @ORM\ManyToOne(targetEntity="Usuario")
+	* @ORM\OneToOne(targetEntity="User")
+    * @ORM\JoinColumn(name="player1", referencedColumnName="id")
 	*/
 	protected $player1;
 
 	/**
 	* @ORM\Column(name="player2", type="integer")
-	* @ORM\ManyToOne(targetEntity="Usuario")
+	* @ORM\OneToOne(targetEntity="User")
+    * @ORM\JoinColumn(name="player2", referencedColumnName="id")
 	*/
 	protected $player2;
 
@@ -60,15 +62,7 @@ class Challenge
 	*/
 	protected $status;
 
-    /**
-    * @ORM\OneToMany(targetEntity="Usuario", mappedBy="challenges")
-    */
-    protected $users;
-
-    public function __construct()
-    {
-        $this->users = new ArrayCollection();
-    }
+    
 
 
 
@@ -272,5 +266,39 @@ class Challenge
     public function getPlayer1()
     {
         return $this->player1;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Challenge
+     */
+    public function addUser(\AppBundle\Entity\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \AppBundle\Entity\User $user
+     */
+    public function removeUser(\AppBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }

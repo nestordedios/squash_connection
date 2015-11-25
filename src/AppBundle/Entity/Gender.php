@@ -23,7 +23,7 @@ private $code;
 private $name;
 
 /**
-* @ORM\OneToMany(targetEntity="Usuario", mappedBy="gender")
+* @ORM\OneToMany(targetEntity="User", mappedBy="gender")
 */
 private $users;
 
@@ -86,11 +86,11 @@ private $users;
     /**
      * Add user
      *
-     * @param \AppBundle\Entity\Usuario $user
+     * @param \AppBundle\Entity\User $user
      *
      * @return Gender
      */
-    public function addUser(\AppBundle\Entity\Usuario $user)
+    public function addUser(\AppBundle\Entity\User $user)
     {
         $this->users[] = $user;
 
@@ -100,9 +100,9 @@ private $users;
     /**
      * Remove user
      *
-     * @param \AppBundle\Entity\Usuario $user
+     * @param \AppBundle\Entity\User $user
      */
-    public function removeUser(\AppBundle\Entity\Usuario $user)
+    public function removeUser(\AppBundle\Entity\User $user)
     {
         $this->users->removeElement($user);
     }

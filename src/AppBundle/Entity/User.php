@@ -8,9 +8,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="usuario")
+ * @ORM\Table(name="`User`")
  */
-class Usuario implements UserInterface, \Serializable
+class User implements UserInterface, \Serializable
 {
 	/**
 	 * @ORM\Column(name="id", type="integer")
@@ -83,14 +83,7 @@ class Usuario implements UserInterface, \Serializable
 	 */
 	 protected $status;
 
-     /**
-     * @ORM\ManyToOne(targetEntity="Challenge", inversedBy="users")
-     * @ORM\JoinColumn(name="challenges", referencedColumnName="id")
-     */
-     protected $challenges;
-
-
-
+     
 	public function getUserName()
 	{
 		return $this->email;
@@ -146,7 +139,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @param string $name
      *
-     * @return Usuario
+     * @return User
      */
     public function setName($name)
     {
@@ -170,7 +163,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @param string $lastName
      *
-     * @return Usuario
+     * @return User
      */
     public function setLastName($lastName)
     {
@@ -194,7 +187,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @param string $email
      *
-     * @return Usuario
+     * @return User
      */
     public function setEmail($email)
     {
@@ -218,7 +211,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @param string $password
      *
-     * @return Usuario
+     * @return User
      */
     public function setPassword($password)
     {
@@ -242,7 +235,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @param integer $playingLevel
      *
-     * @return Usuario
+     * @return User
      */
     public function setPlayingLevel($playingLevel)
     {
@@ -266,7 +259,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @param string $gender
      *
-     * @return Usuario
+     * @return User
      */
     public function setGender($gender)
     {
@@ -290,7 +283,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @param string $country
      *
-     * @return Usuario
+     * @return User
      */
     public function setCountry($country)
     {
@@ -314,7 +307,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @param string $city
      *
-     * @return Usuario
+     * @return User
      */
     public function setCity($city)
     {
@@ -338,7 +331,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @param string $status
      *
-     * @return Usuario
+     * @return User
      */
     public function setStatus($status)
     {
@@ -362,7 +355,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @param string $club
      *
-     * @return Usuario
+     * @return User
      */
     public function setClub($club)
     {
@@ -393,7 +386,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @param \AppBundle\Entity\Challenge $challenge
      *
-     * @return Usuario
+     * @return User
      */
     public function addChallenge(\AppBundle\Entity\Challenge $challenge)
     {
@@ -427,7 +420,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @param \AppBundle\Entity\Challenge $challenges
      *
-     * @return Usuario
+     * @return User
      */
     public function setChallenges(\AppBundle\Entity\Challenge $challenges = null)
     {
