@@ -73,6 +73,8 @@ class Usuario implements UserInterface, \Serializable
 
     /**
     * @Assert\NotBlank(message = "Choose a club.")
+    * @ORM\ManyToOne(targetEntity="Club", inversedBy="users")
+    * @ORM\JoinColumn(name="club", referencedColumnName="id")
     */
     protected $club;
 	
@@ -82,7 +84,8 @@ class Usuario implements UserInterface, \Serializable
 	 protected $status;
 
      /**
-     * @ORM\OneToMany(targetEntity="Challenge", mappedBy="player1")
+     * @ORM\ManyToOne(targetEntity="Challenge", inversedBy="users")
+     * @ORM\JoinColumn(name="challenges", referencedColumnName="id")
      */
      protected $challenges;
 
@@ -417,5 +420,19 @@ class Usuario implements UserInterface, \Serializable
     public function getChallenges()
     {
         return $this->challenges;
+    }
+
+    /**
+     * Set challenges
+     *
+     * @param \AppBundle\Entity\Challenge $challenges
+     *
+     * @return Usuario
+     */
+    public function setChallenges(\AppBundle\Entity\Challenge $challenges = null)
+    {
+        $this->challenges = $challenges;
+
+        return $this;
     }
 }
