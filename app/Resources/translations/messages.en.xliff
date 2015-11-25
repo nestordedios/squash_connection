@@ -17,7 +17,7 @@
             </trans-unit>
             <trans-unit id="club.content">
                 <source>club.content</source>
-                <target>If you are the owner of a club, sign up and other players will be able to contact the members of your club</target>
+                <target>If you are the owner of a club or you want to create your own, sign up and other players will be able to contact the members of your club</target>
             </trans-unit>
             <trans-unit id="club.subscription">
                 <source>club.subscription</source>
