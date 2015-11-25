@@ -34,15 +34,42 @@ html {
 }
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 487px;
+  margin-bottom: 121px;
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 329px;
+  height: 121px;
   background-color: black;
+}
+
+@media only screen and (max-width: 768px){
+  .footer{
+    height: 329px;
+  }
+  body{
+    margin-bottom: 329px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px){
+  .footer{
+    height: 161px;
+  }
+  body{
+    margin-bottom: 161px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px){
+  .footer{
+    height: 141px;
+  }
+  body{
+    margin-bottom: 141px;
+  }
 }
 
 
