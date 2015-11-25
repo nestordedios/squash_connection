@@ -94,7 +94,7 @@ class Club implements UserInterface, \Serializable
      protected $status;
 
      /**
-     * @ORM\OneToMany(targetEntity="Usuario", mappedBy="gender")
+     * @ORM\OneToMany(targetEntity="Usuario", mappedBy="club")
      */
     private $users;
 
@@ -477,4 +477,9 @@ class Club implements UserInterface, \Serializable
     {
         return $this->users;
     }
+
+    public function __toString() {
+        return $this->clubName;
+    }
+
 }
