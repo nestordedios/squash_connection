@@ -21,12 +21,6 @@ class ChallengeType extends AbstractType
 
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder
-			->add('date', 'date', array('format' => 'ddMMyyyy'))
-			->add('time', 'time')		
-			->add('message', 'textarea')
-		;
-
 		$user = $this->tokenStorage->getToken()->getUser();
 		if(!$user){
 			throw new \LogicException(
@@ -34,10 +28,11 @@ class ChallengeType extends AbstractType
 			);
 		}
 
-
-		
-
-		$builder->addEventListener(
+		$builder
+			->add('date', 'date', array('format' => 'ddMMyyyy'))
+			->add('time', 'time')		
+			->add('message', 'textarea')
+			->addEventListener(
 			FormEvents::PRE_SET_DATA, 
 			function (FormEvent $event) use ($user){
 				$form = $event->getForm();
@@ -53,8 +48,10 @@ class ChallengeType extends AbstractType
 
 				$form->add('club', 'entity', $formOptions);
 			}
-		)
-			->add('challenge', 'submit', array('attr' => array('class' => 'btn btn-primary')));
+			)
+			->add('challenge', 'submit', array('attr' => array('class' => 'btn btn-primary')))
+		;
+
 	}
 
 	public function getName()

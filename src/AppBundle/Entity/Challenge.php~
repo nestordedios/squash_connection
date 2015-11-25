@@ -2,10 +2,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
 * @ORM\Table(name="challenge")
-* @ORM\Entity
+* @ORM\Entity(repositoryClass="AppBundle\Entity\ChallengeRepository")
 */
 class Challenge
 {
@@ -29,7 +30,8 @@ class Challenge
 	protected $player2;
 
 	/**
-	* 
+	* @ORM\Column(name="club", type="integer")
+	* @ORM\ManyToOne(targetEntity="Club")
 	*/
 	protected $club;
 
@@ -57,6 +59,16 @@ class Challenge
 	* @ORM\Column(name="status", type="string", nullable=true)
 	*/
 	protected $status;
+
+    /**
+    * @ORM\OneToMany(targetEntity="Usuario", mappedBy="challenges")
+    */
+    protected $users;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
 
 

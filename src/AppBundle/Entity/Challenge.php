@@ -2,10 +2,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
 * @ORM\Table(name="challenge")
-* @ORM\Entity
+* @ORM\Entity(repositoryClass="AppBundle\Entity\ChallengeRepository")
 */
 class Challenge
 {
@@ -29,7 +30,8 @@ class Challenge
 	protected $player2;
 
 	/**
-	* 
+	* @ORM\Column(name="club", type="integer")
+	* @ORM\ManyToOne(targetEntity="Club")
 	*/
 	protected $club;
 
@@ -39,7 +41,7 @@ class Challenge
 	protected $date;
 
 	/**
-	* @ORM\Column(name="time", type="time")
+	* @ORM\Column(name="time", type="datetime")
 	*/
 	protected $time;
 
@@ -57,6 +59,16 @@ class Challenge
 	* @ORM\Column(name="status", type="string", nullable=true)
 	*/
 	protected $status;
+
+    /**
+    * @ORM\OneToMany(targetEntity="Usuario", mappedBy="challenges")
+    */
+    protected $users;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
 
 
@@ -260,5 +272,39 @@ class Challenge
     public function getPlayer1()
     {
         return $this->player1;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \AppBundle\Entity\Usuario $user
+     *
+     * @return Challenge
+     */
+    public function addUser(\AppBundle\Entity\Usuario $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \AppBundle\Entity\Usuario $user
+     */
+    public function removeUser(\AppBundle\Entity\Usuario $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }
