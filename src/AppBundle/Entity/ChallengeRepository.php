@@ -20,7 +20,7 @@ class ChallengeRepository extends \Doctrine\ORM\EntityRepository
 				join AppBundle:User as p1 with p1.id = ch.player1 
 				join AppBundle:User as p2 with p2.id = ch.player2 
 				join AppBundle:Club as c with c.id = ch.club
-				where ch.status is NULL"
+				where ch.status is NULL and ch.player2 = $userId"
 			)
 			->getResult();
 	}
