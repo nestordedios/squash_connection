@@ -26,6 +26,7 @@
 												<th>Club</th>
 												<th>Date</th>
 												<th>Time</th>
+												<th>Messages</th>
 												<th>Answer</th>
 											</tr>
 										</thead>
@@ -35,6 +36,12 @@
 											<td>{{ challenge.clubName }}</td>
 											<td>{{ challenge.date|date('l, jS F Y') }}</td>
 											<td>{{ challenge.time|date('H:i') }}</td>
+											<td>												
+												<a href="#"> 
+													Messages
+													<span class="badge"></span>
+												</a>
+											</td>
 											<td>
 												{% if challenge.status == 'Accepted' %}
 													<p class="text-success">{{ challenge.status }}</p>
