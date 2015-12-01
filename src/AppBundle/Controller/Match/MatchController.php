@@ -16,8 +16,9 @@ class MatchController extends Controller
 		$userId = $this->getUser()->getId();
 
 		$matches = $this->getDoctrine()->getRepository('AppBundle:Match')->findUserMatches($userId);
+		$playedMatches = $this->getDoctrine()->getRepository('AppBundle:Match')->findPlayedMatches($userId);
 
-		return $this->render('match/my_matches_list.html.twig', array('matches' => $matches));
+		return $this->render('match/my_matches_list.html.twig', array('matches' => $matches, 'playedMatches' => $playedMatches));
 	}
 }
 
