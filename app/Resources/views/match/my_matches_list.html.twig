@@ -13,8 +13,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">												
-									<u><h1>Coming Matches</h1></u>
-									{% if matches is not empty %}
+									<u><h1>Matches</h1></u>
+									{% set counter = 0 %}
+									{% for match in matches %}
+										{% if match.status != 'Played' %}
+											{% set counter = counter + 1 %}
+										{% endif %}
+									{% endfor %}
+									{% if matches is not empty and counter != 0%}
 									<table class="table table-striped table-bordered">
 										<thead>
 											<tr>
@@ -28,37 +34,39 @@
 											</tr>
 										</thead>
 									{% for match in matches %}
-										<tr>
-											<td>{{ match.player1Name }} {{ match.player1lastName }}</td>
-											<td>{{ match.player2Name }} {{ match.player2lastName }}</td>
-											<td>{{ match.clubName }}</td>
-											<td>{{ match.date|date('l, jS F Y') }}</td>
-											<td>{{ match.time|date('H:i') }}</td>
-											<td>												
-												<a href="#"> 
-													Comments
-													<span class="badge"></span>
-												</a>
-											</td>
-											<td>
-												<div class="row">
-													<a href="#" class="btn btn-success" role="button">WIN</a>				
-													<a href="#" class="btn btn-danger" role="button">LOST</a>
-												</div>
-											</td>
-										</tr>
+										{% if match.status != 'Played' %}										
+											<tr id="{{ match.id }}">
+												<td>{{ match.player1Name }} {{ match.player1lastName }}</td>
+												<td>{{ match.player2Name }} {{ match.player2lastName }}</td>
+												<td>{{ match.clubName }}</td>
+												<td class="date">{{ match.date|date('l, jS F Y') }}</td>
+												<td>{{ match.time|date('H:i') }}</td>
+												<td>												
+													<a href="#"> 
+														Comments
+														<span class="badge"></span>
+													</a>
+												</td>
+												<td>
+													<div class="row">
+														<a id="won" href="#" class="btn btn-success result" role="button" onclick="checkDate({{ match.id }}, this.text)">WON</a>			
+														<a id="lost" href="#" class="btn btn-danger result" role="button" onclick="checkDate({{ match.id }}, this.text)">LOST</a>
+													</div>
+												</td>
+											</tr>
+										{% endif %}
 									{% endfor %}
 									</table>
 									{% else %}
-										<h6>You haven't challenged someone yet.</h6>
+										<h6>You haven't challenged someone.</h6>
 									{% endif %}
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-12">										
+				<div class="col-sm-12" id="played-container">										
 									<u><h1>Played Matches</h1></u>
 									{% if playedMatches is not empty %}
-									<table class="table table-striped table-bordered">
+									<table class="table table-striped table-bordered" id="played">
 										<thead>
 											<tr>
 												<th>Player 1</th>
@@ -72,10 +80,22 @@
 										</thead>
 									{% for match in playedMatches %}
 									{# Setting up the class the row will have #}										
-										{% if match.result == 'WON' %}
-											{% set clase = 'success' %}
-										{% else %}
-											{% set clase = 'danger' %}
+										{% if match.player1Id == app.user.id %}
+											{% if match.resultPlayer1 == 'WON' %}
+												{% set clase = 'success' %}
+												{% set result = match.resultPlayer1 %}
+											{% else %}
+												{% set clase = 'danger' %}
+												{% set result = match.resultPlayer1 %}
+											{% endif %}
+										{% elseif match.player2Id == app.user.id %}
+											{% if match.resultPlayer2 == 'WON' %}
+												{% set clase = 'success' %}
+												{% set result = match.resultPlayer2 %}
+											{% else %}
+												{% set clase = 'danger' %}
+												{% set result = match.resultPlayer2 %}
+											{% endif %}
 										{% endif %}		
 										<tr class="{{ clase }}">
 											<td>{{ match.player1Name }} {{ match.player1lastName }}</td>
@@ -90,13 +110,13 @@
 												</a>
 											</td>
 											<td class="success">
-												<strong>{{ match.result }}</strong>
+												<strong>{{ result }}</strong>
 											</td>
 										</tr>
 									{% endfor %}
 									</table>
 									{% else %}
-										<h6>You haven't played any match yet.</h6>
+										<h6 id="no-played">You haven't played any match yet.</h6>
 									{% endif %}
 				</div>
 			</div>

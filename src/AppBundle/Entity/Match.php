@@ -49,7 +49,12 @@ class Match
 	/**
 	* @ORM\Column(type="string", nullable=true)
 	*/
-	protected $result;
+	protected $resultPlayer1;
+
+    /**
+    * @ORM\Column(type="string", nullable=true)
+    */
+    protected $resultPlayer2;
 
 
 
@@ -229,5 +234,53 @@ class Match
     public function getResult()
     {
         return $this->result;
+    }
+
+    /**
+     * Set resultPlayer1
+     *
+     * @param string $resultPlayer1
+     *
+     * @return Match
+     */
+    public function setResultPlayer1($resultPlayer1)
+    {
+        $this->resultPlayer1 = $resultPlayer1;
+
+        return $this;
+    }
+
+    /**
+     * Get resultPlayer1
+     *
+     * @return string
+     */
+    public function getResultPlayer1()
+    {
+        return $this->resultPlayer1;
+    }
+
+    /**
+     * Set resultPlayer2
+     *
+     * @param string $resultPlayer2
+     *
+     * @return Match
+     */
+    public function setResultPlayer2($resultPlayer2)
+    {
+        $this->resultPlayer2 = $resultPlayer2;
+
+        return $this;
+    }
+
+    /**
+     * Get resultPlayer2
+     *
+     * @return string
+     */
+    public function getResultPlayer2()
+    {
+        return $this->resultPlayer2;
     }
 }

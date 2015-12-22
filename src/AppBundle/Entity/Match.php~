@@ -4,7 +4,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-* @ORM\Entity
+* @ORM\Entity(repositoryClass="AppBundle\Entity\MatchRepository")
 * @ORM\Table(name="`Match`")
 */
 class Match
@@ -49,7 +49,12 @@ class Match
 	/**
 	* @ORM\Column(type="string", nullable=true)
 	*/
-	protected $result;
+	protected $resultPlayer1;
+
+    /**
+    * @ORM\Column(type="string", nullable=true)
+    */
+    protected $resultPlayer2;
 
 
 
