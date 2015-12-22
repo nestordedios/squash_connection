@@ -3,4 +3,8 @@ app:
     type:     annotation
 logout:
     path:   /logout
-
+homepagedos:
+    path: /{_locale}
+    defaults: { _controller: AppBundle:Default:index }
+    requirements:
+        _locale: en|es|nl

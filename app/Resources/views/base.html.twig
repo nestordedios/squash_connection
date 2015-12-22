@@ -35,7 +35,7 @@
 				<div class="row">
 					<div class="col-sm-4">
 						</br>
-						<p class="text-center">&copy; Squash Connection Project</p>
+						<p class="text-center">&copy;{{ 'footer.projectName'|trans }}</p>
 						<p class="text-center">
 							<a href="http://www.github.com/nestordedios/squash_connection" class="btn btn-social-icon btn-github" target="_blank">
 								<i class="fa fa-github"></i>
@@ -44,7 +44,7 @@
 					</div>
 					<div class="col-sm-4">
 						</br>
-						<p class="text-center">Follow us:</p>
+						<p class="text-center">{{ 'footer.follow'|trans }}</p>
 						<p class="text-center">
 						<a class="btn btn-social-icon btn-twitter" href="http://www.twitter.com" target="_blank">
     						<i class="fa fa-twitter"></i>
@@ -70,7 +70,7 @@
 						</span> 
 						by 
 						<span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">
-							Néstor de Dios Fernandez
+							Néstor de Dios Fernández
 						</span> 
 						is licensed under a 
 						<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
@@ -93,6 +93,7 @@
 				'js/bootstrap.js'
 				'js/dd00e43.js'
 				'js/rating.js'
+				'js/app.js'
 			%}
 				<script src="{{ asset_url }}"></script>
 			{% endjavascripts %}	

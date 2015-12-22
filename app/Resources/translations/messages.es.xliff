@@ -36,6 +36,30 @@
 				<source>player.subscription</source>
 				<target>Registrarse</target>
 			</trans-unit>
+            <trans-unit id="nav.login">
+                <source>nav.login</source>
+                <target>Iniciar Sesión</target>
+            </trans-unit>
+            <trans-unit id="footer.projectName">
+                <source>footer.projectName</source>
+                <target>Proyecto Squash Connection</target>
+            </trans-unit>
+            <trans-unit id="footer.follow">
+                <source>footer.follow</source>
+                <target>Síguenos:</target>
+            </trans-unit>
+            <trans-unit id="language.en">
+                <source>language.en</source>
+                <target>Inglés</target>
+            </trans-unit>
+            <trans-unit id="language.es">
+                <source>language.es</source>
+                <target>Español</target>
+            </trans-unit>
+            <trans-unit id="language.nl">
+                <source>language.nl</source>
+                <target>Holandés</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
