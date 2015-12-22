@@ -17,7 +17,6 @@ class DefaultController extends Controller
     	if($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')){
     		$this->get('security.token_storage')->setToken(null);
 			$this->get('request')->getSession()->invalidate();
-			dump("hola");
     	}
         return $this->render('default/index.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
