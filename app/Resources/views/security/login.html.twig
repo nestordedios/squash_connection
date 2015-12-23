@@ -11,11 +11,6 @@
 {% endblock %}
 
 {% block body %}
-    {% if request.pathInfo == "/admin" %}
-        {% set action = path('admin_login_check') %}
-    {% elseif request.pathInfo == "/login" %}
-        {% set action = path('login_check') %}
-    {% endif %}
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4 col-sm-offset-4">
@@ -24,7 +19,7 @@
 						<h3 class="panel-title">Login</h3>
 					</div>
 					<div class="panel-body">
-						<form class="form-horizontal" action="{{ action }}" method="post">
+						<form class="form-horizontal" action="{{ path('login_check') }}" method="post">
 							<div class="form-group">
     							<label for="username" class="col-sm-3 control-label">Username</label>
     							<div class="col-sm-9">

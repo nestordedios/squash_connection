@@ -12,6 +12,12 @@ class SecurityController extends Controller
 	 */
 	 public function loginAction(Request $request)
 	 {
+	 	//If user is logged in... Log out the user
+    	if($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')){
+    		$this->get('security.token_storage')->setToken(null);
+			$this->get('request')->getSession()->invalidate();
+    	}
+    	
 	 	$authenticationUtils = $this->get('security.authentication_utils');
 
     	// get the login error if there is one

@@ -12,10 +12,6 @@ security:
             entity:
                 class: AppBundle:User
                 property: email
-        admin:
-            entity:
-                class: AppBundle:User
-                property: email
         in_memory:
             memory: ~
 
@@ -29,22 +25,11 @@ security:
             provider: our_db_provider
             anonymous: ~
             http_basic: ~
+            context: my_context
             form_login:
                 login_path: /login
                 check_path: /login_check
                 default_target_path: user_homepage
-                csrf_provider: security.csrf.token_manager
-            logout:
-                path: /logout
-                target: homepage
-        admin:
-            pattern: ^/admin
-            anonymous: ~
-            provider: admin
-            form_login:
-                login_path: /admin/login
-                check_path: /admin/login_check
-                default_target_path: admin_homepage
                 csrf_provider: security.csrf.token_manager
             logout:
                 path: /logout

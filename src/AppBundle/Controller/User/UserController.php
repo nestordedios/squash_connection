@@ -65,7 +65,16 @@ class UserController extends Controller
 	 * @Route("/user/homepage", name="user_homepage")
 	 */
 	public function playerHomepageAction(Request $request)
-	{
+	{	
+		if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+    		$user = $this->getUser();
+			if($user->getStatus() == "ROLE_ADMIN"){
+				return $this->redirectToRoute('admin_homepage'); 	
+			}
+		}
+
+
+
 		$em = $this->getDoctrine()->getManager();
 
 		$defaultData = array('message' => 'Mensaje');
@@ -165,7 +174,7 @@ class UserController extends Controller
 
 		$players = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
 
-		return $this->render('user/user_homepage.html.twig', array('form' => $form->createView(), 'players' => $players, 'request' => $request));
+		return $this->render('user/user_homepage.html.twig', array('form' => $form->createView(), 'players' => $players, 'request' => $user));
 	}
 
 }

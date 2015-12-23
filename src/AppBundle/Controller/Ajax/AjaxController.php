@@ -55,6 +55,41 @@ class AjaxController extends Controller
 
 		return $response;
 	}
+
+	/**
+	* @Route("/admin/lock-user", name="lock_user")
+	*/
+	public function blockUserAction(Request $request){
+		$em = $this->getDoctrine()->getManager();
+		$id = $request->request->get('id');
+
+		$user = $em->getRepository('AppBundle:User')->find($id);
+		$user->setStatus('ROLE_LOCKED');
+		$em->flush();
+
+		$response = new JsonResponse();
+		$response->setData(array('texto' => "Bloqueado!!"));
+
+		return $response;
+	}
+
+	/**
+	* @Route("admin/unlock-user", name="unlock-user")
+	*/
+	public function unlockUserAction(Request $request){
+		$em = $this->getDoctrine()->getManager();
+		$id = $request->request->get('id');
+
+		$user = $em->getRepository('AppBundle:User')->find($id);
+		$user->setStatus("ROLE_USER");
+
+		$em->flush();
+
+		$response = new JsonResponse();
+		$response->setData(array('texto' => "Desbloqueado"));
+
+		return $response;
+	}
 }
 
 ?>

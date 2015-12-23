@@ -38,7 +38,51 @@ function checkDate(id, value){
 	}else{
 		alert("This match won't be updated");
 	}
-	
+
+}
+
+function lockUser(id){
+	var isGood = confirm("Are you sure you want to lock this user?");
+	if(isGood){
+		if($("#"+id+" td#status").text() == "ROLE_LOCKED"){			
+			alert('This user is already locked.');	
+		}else{
+			$.ajax({
+				type: 'POST',
+				url: '/admin/lock-user',
+				data: {id: id},
+				dataType: 'json',
+				success: function(result){
+					alert("User locked");
+					$("#"+id+" td#status").text("ROLE_LOCKED");
+				}
+			});
+		}
+	}else{
+		alert("This user will not be locked");
+	}
+}
+
+function unlockUser(id){
+	var isGood = confirm("Are you sure you want to unlock this user?");
+	if(isGood){
+		if($("#"+id+" td#status").text() == "ROLE_USER"){			
+			alert("This user is already unlocked");
+		}else{
+			$.ajax({
+				type: 'POST',
+				url: '/admin/unlock-user',
+				data: {id: id},
+				dataType: 'json',
+				success: function(result){
+					alert("User unlocked");
+					$("#"+id+" td#status").text("ROLE_USER");
+				}
+			});
+		}
+	}else{
+		alert("This user will not be unlocked");
+	}
 }
 
 
