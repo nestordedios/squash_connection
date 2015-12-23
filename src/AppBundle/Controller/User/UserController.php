@@ -165,7 +165,7 @@ class UserController extends Controller
 
 		$players = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
 
-		return $this->render('user/user_homepage.html.twig', array('form' => $form->createView(), 'players' => $players));
+		return $this->render('user/user_homepage.html.twig', array('form' => $form->createView(), 'players' => $players, 'request' => $request));
 	}
 
 }

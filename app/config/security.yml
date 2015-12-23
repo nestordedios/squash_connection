@@ -12,6 +12,10 @@ security:
             entity:
                 class: AppBundle:User
                 property: email
+        admin:
+            entity:
+                class: AppBundle:User
+                property: email
         in_memory:
             memory: ~
 
@@ -32,7 +36,22 @@ security:
                 csrf_provider: security.csrf.token_manager
             logout:
                 path: /logout
-                target: homepage				
+                target: homepage
+        admin:
+            pattern: ^/admin
+            anonymous: ~
+            provider: admin
+            form_login:
+                login_path: /admin/login
+                check_path: /admin/login_check
+                default_target_path: admin_homepage
+                csrf_provider: security.csrf.token_manager
+            logout:
+                path: /logout
+                target: homepage
+
+    role_hierarchy:
+        ROLE_ADMIN:    ROLE_USER
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
