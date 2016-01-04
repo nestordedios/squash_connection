@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Squash Connection - Send Message {% endblock %}
+
+{% block body_id 'send_message'%}
+
+{% block header %}
+	{% include 'admin/_header_admin_homepage.html.twig' %}
+{% endblock %}
+
+{% block body %}
+<div class="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-primary">					
+					<div class="panel-body">
+					{{ dump(request) }}
+						{{ form(form) }}
+					
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	
+      <hr>
+{% endblock %}

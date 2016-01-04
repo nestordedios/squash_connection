@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Squash Connection - Sent Message {% endblock %}
+
+{% block body_id 'sent_message'%}
+
+{% block header %}
+	{% include 'default/_header_general_pages.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	
+	{% set error = app.session.flashbag.get('error') %}
+	{% set notice = app.session.flashbag.get('notice') %}
+
+	{% if error is not empty %}
+	    {% set flash_message = error %}
+	    {% set class = 'text-danger' %}
+	    {% set icon =  'fa fa-exclamation-circle fa-2x' %}
+    {% elseif notice is not empty %}
+		{% set flash_message = notice %}
+		{% set class = 'text-success' %}
+		{% set icon =  'fa fa-check-square fa-2x' %}
+	{% endif %}
+
+    <div class="content">
+	    <div class="container">
+	      <div class="row">
+	        <div class="col-md-8 col-md-offset-2">
+	          <h4 class="{{ class }} text-center ">
+              <i class="{{ icon }}"></i>
+              	{{ flash_message[0] }}	
+              </h4>
+            <br>
+	          <div class="row">
+	          	<div class="col-md-6 text-center">
+                <a class="btn btn-primary" href="{{ path('login_route') }}">Login</a>
+	          	</div>
+	          	<div class="col-md-6 text-center">
+                <a class="btn btn-primary" href="{{ path('homepage') }}">Homepage</a>
+	          	</div>	
+	          </div>
+	        </div>
+	      </div>
+		</div>
+	</div>
+
+{% endblock %}

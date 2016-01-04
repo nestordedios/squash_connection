@@ -97,3 +97,12 @@ table tbody td{
 table thead th{
   text-align: center;
 }
+
+.message{
+  padding: 1em 1em 0.5em 1em;
+}
+
+.message h6{
+  padding-top: 0.5em;
+}
+

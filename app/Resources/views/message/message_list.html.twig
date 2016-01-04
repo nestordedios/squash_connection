@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Squash Connection - Messages{% endblock %}
+
+{% block body_id 'message_list' %}
+
+{% block header %}
+	{% include 'user/_header_user_homepage.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<div class="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-10 col-sm-offset-1">
+					<div class="panel panel-primary">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-sm-10 col-sm-offset-1">
+									<u><h1>Messages.</h1></u>
+									{% if messages is not empty %}
+									<table class="table table-striped table-bordered">
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>From</th>
+												<th>Date</th>
+												<th>Read</th>
+											</tr>
+										</thead>
+									{% for message in messages %}
+										<tr>
+											{% if message.status == 0 %}
+												<td><i class="fa fa-envelope"></i></td>
+											{% elseif message.status == 1 %}
+												<td><i class="fa fa-envelope-o"></i></td>
+											{% endif %}
+											<td>{{ message.nameSender }} {{ message.lastNameSender }}</td>										
+											<td>{{ message.date|date() }}</td>
+											<td><a href="{{ path('read_message', {'slug': message.id}) }}">Read</a></td>
+										</tr>
+									{% endfor %}
+									</table>
+									{% else %}
+										<h6>There are not messages for you.</h6>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock body %}

@@ -56,6 +56,7 @@
 							<th>City</th>
 							<th>Level</th>
 							<th>Status</th>
+							<th>Message</th>
 							<th>Lock</th>
 							<th>Unlock</th>
 						</tr>
@@ -71,6 +72,7 @@
 								<td>{{ player.city }}</td>
 								<td>{{ player.playingLevel|rating(player.playingLevel, 'fa-lg') }}</td>
 								<td id="status">{{ player.status }}</td>
+								<td><a class="btn btn-primary" href="{{ path('send_message', {'slug': player.id}) }}">Send Message</a></td>
 								<td><a class="btn btn-danger" href="#" onclick="lockUser({{ player.id }})">Lock</a></td>
 								<td><a class="btn btn-success" href="#" onclick="unlockUser({{ player.id }})">Unlock</a></td>
 							</tr>
