@@ -20,7 +20,7 @@ class MatchRepository extends \Doctrine\ORM\EntityRepository
 	{
 		return $this->getEntityManager()
 			->createQuery(
-				"Select m.id, c.clubName, m.date, m.time, p1.name as player1Name, p1.lastName as player1lastName, p2.name as player2Name, p2.lastName as player2lastName, m.status 
+				"Select p1.id as player1Id, p2.id as player2Id, m.resultPlayer1 as resultPlayer1, m.resultPlayer2 as resultPlayer2, m.id, c.clubName, m.date, m.time, p1.name as player1Name, p1.lastName as player1lastName, p2.name as player2Name, p2.lastName as player2lastName, m.status 
 				FROM AppBundle:Match as m 
 				join AppBundle:User as p1 with p1.id = m.player1 
 				join AppBundle:User as p2 with p2.id = m.player2 

@@ -11,7 +11,7 @@ class MessageType extends AbstractType
 	{
 		$builder
 			->add('message', 'textarea', array(
-										 	'attr' => array('maxlength' => '20')
+										 	'attr' => array('maxlength' => '2000')
 										 ))
 			->add('send', 'submit')
 		;
