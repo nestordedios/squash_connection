@@ -120,21 +120,21 @@ class UserController extends Controller
 			if($data['country'] != null){
 				$country = $data['country']->getCode();
 				if($dql == ''){
-					$dql = "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:User u, AppBundle:Country c, AppBundle:Gender g where c.code = :country and u.country = c.code and g.code = u.gender";
+					$dql = "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:User u, AppBundle:Country c, AppBundle:Gender g, AppBundle:Club cl where cl.id = u.club and c.code = :country and u.country = c.code and g.code = u.gender";
 				}
 			}
 			if($data['club'] != null){
 				$club .= $data['club']->getClubName();
 				if($dql == ''){
-					$dql .= "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:User u, AppBundle:Country c, AppBundle:Gender g where u.club = :club and u.country = c.code and g.code = u.gender";
+					$dql .= "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:User u, AppBundle:Country c, AppBundle:Gender g, AppBundle:Club cl where cl.id = u.club and cl.clubName = :club and u.country = c.code and g.code = u.gender";
 				}else{
-					$dql .= " and u.club = :club";
+					$dql .= " and cl.clubName = :club";
 				}
 			}
 			if($data['gender'] != null){
 				$gender = $data['gender']->getCode();
 				if($dql == ''){
-					$dql .= "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:User u, AppBundle:Country c, AppBundle:Gender g where g.code = :gender and u.country = c.code and g.code = u.gender";
+					$dql .= "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:User u, AppBundle:Country c, AppBundle:Gender g, AppBundle:Club cl where cl.id = u.club and g.code = :gender and u.country = c.code and g.code = u.gender";
 				}else{
 					$dql .= " and g.code = :gender";
 				}
@@ -142,14 +142,14 @@ class UserController extends Controller
 			if($data['level'] != null){
 				$level = round($data['level']);
 				if($dql == ''){
-					$dql .= "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:User u, AppBundle:Country c, AppBundle:Gender g where u.playingLevel = :level and u.country = c.code and g.code = u.gender";
+					$dql .= "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:User u, AppBundle:Country c, AppBundle:Gender g, AppBundle:Club cl where cl.id = u.club and u.playingLevel = :level and u.country = c.code and g.code = u.gender";
 				}else{
 					$dql .= " and u.playingLevel = :level";
 				}
 			}
 
 			if($dql == ''){
-				$dql = "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:User u, AppBundle:Country c, AppBundle:Gender g where u.country = c.code and g.code = u.gender";
+				$dql = "Select u.id, u.name, u.lastName, g.name as gender, c.name as country, u.playingLevel from AppBundle:User u, AppBundle:Country c, AppBundle:Gender g, AppBundle:Club cl where cl.id = u.club and u.country = c.code and g.code = u.gender";
 			}
 
 			$query = $em->createQuery($dql);
