@@ -46,7 +46,7 @@ class Club implements UserInterface, \Serializable
 	
 	/**
 	 * @ORM\Column(type="date")
-     * @Assert\Date()
+     * @Assert\NotBlank(message = "Choose a foundation date.")
 	 */
 	protected $foundationDate;
 	
@@ -58,7 +58,7 @@ class Club implements UserInterface, \Serializable
 	 
 	 /**
 	  * @ORM\Column(type="string")
-      * @Assert\Country()
+      * @Assert\NotBlank(message = "Choose a country.")
 	  */
 	 protected $country;
 	  
