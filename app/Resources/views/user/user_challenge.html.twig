@@ -60,10 +60,10 @@
 											<div class="col-md-9">
 												<div class="progress">											
 												  <div class="progress-bar progress-bar-success" style="width: {{ wonPercentage }}%">
-												    {{ wonPercentage }}% Matches won.
+												    {{ wonPercentage|round }}% Matches won.
 												  </div>
 												  <div class="progress-bar progress-bar-danger" style="width: {{ lostPercentage }}%">
-												    {{ lostPercentage }}% Matches lost.
+												    {{ lostPercentage|round }}% Matches lost.
 												  </div>
 												</div>
 											</div>
