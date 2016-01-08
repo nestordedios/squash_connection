@@ -45,9 +45,17 @@
 													<p><strong>Lost:</strong> {{ lost[0].lost }} matches.</p>
 												</div>
 											
-										</div> 
-										{% set wonPercentage = won[0].won / (won[0].won + lost[0].lost) * 100 %}
-										{% set lostPercentage = lost[0].lost / (won[0].won + lost[0].lost) * 100 %}
+										</div>
+										{% if won[0].won != 0 %} 
+											{% set wonPercentage = won[0].won / (won[0].won + lost[0].lost) * 100 %}
+										{% else %}
+											{% set wonPercentage = 0 %}
+										{% endif %}
+										{% if lost[0].lost != 0 %}
+											{% set lostPercentage = lost[0].lost / (won[0].won + lost[0].lost) * 100 %}
+										{% else %}
+											{% set lostPercentage = 0 %}
+										{% endif %}
 										<div class="row">
 											<div class="col-md-9">
 												<div class="progress">											
