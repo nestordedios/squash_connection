@@ -12,11 +12,21 @@
 <div class="content">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-12">
+			<div class="col-md-12">
 				<div class="panel panel-primary">					
-					<div class="panel-body">
-						{{ form(form) }}
-					
+					<div class="panel-body">					
+					{{form_start(form,{'method': 'POST', 'attr': {'novalidate': 'novalidate', 'class': 'form-horizontal'}})}}
+					<div class="form-group">
+						{{ form_label(form.message, 'Message:', {'label_attr': {'class': 'col-md-1'}}) }}
+						<div class="col-md-11">
+						{{ form_widget(form.message) }}
+						</div>
+						{{ form_errors(form.message) }}
+					</div>
+					<div class="">						
+						{{ form_widget(form.send, {'attr': {'class': 'btn btn-primary'}}) }}						
+						{{ form_end(form) }}
+					</div>
 					
 					</div>
 				</div>

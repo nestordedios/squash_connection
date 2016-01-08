@@ -29,7 +29,7 @@ class ChallengeType extends AbstractType
 		}
 
 		$builder
-			->add('date', 'date', array('format' => 'ddMMyyyy'))
+			->add('date', 'date', array('format' => 'ddMMyyyy', 'years' => range(date('Y'), date('Y')+10), 'months' => range(date('m'), 12), 'days' => range(date('d'), 31)))
 			->add('time', 'time')		
 			->add('message', 'textarea')
 			->addEventListener(

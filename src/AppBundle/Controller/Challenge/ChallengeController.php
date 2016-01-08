@@ -21,6 +21,8 @@ class ChallengeController extends Controller
 	public function challengeAction(Request $request, $slug)
 	{
 		$player = $this->getDoctrine()->getRepository('AppBundle:User')->find($slug);
+		$lostMatches = $this->getDoctrine()->getRepository('AppBundle:User')->getLostMatches($slug);
+		$wonMatches = $this->getDoctrine()->getRepository('AppBundle:User')->getWonMatches($slug);
 		$challenge = new Challenge();
 		$user = $this->getUser();
 		$tokenStorage = $this->container->get('security.token_storage');
@@ -60,7 +62,7 @@ class ChallengeController extends Controller
 			}
 		}
 
-		return $this->render('user/user_challenge.html.twig', array('form' => $form->createView(), 'slug' => $slug, 'player' => $player));
+		return $this->render('user/user_challenge.html.twig', array('form' => $form->createView(), 'slug' => $slug, 'player' => $player, 'won' => $wonMatches, 'lost' => $lostMatches));
 		
 	}
 
