@@ -8,7 +8,7 @@
             </trans-unit>
             <trans-unit id="welcome.content">
                 <source>welcome.content</source>
-                <target>Are you tired of playing against the same people over and over? Sign up and start playing against new players whenever you want.</target>
+                <target>Are you bored of playing against the same people over and over? Sign up and start playing against new players whenever you want.</target>
             </trans-unit>
 			
             <trans-unit id="club.heading">

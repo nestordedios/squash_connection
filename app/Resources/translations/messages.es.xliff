@@ -8,7 +8,7 @@
             </trans-unit>
             <trans-unit id="welcome.content">
                 <source>welcome.content</source>
-                <target>¿Cansado de jugar siempre contra los mismos? Regístrate y empieza a jugar con nuevos jugadores cada día.</target>
+                <target>Aburrido de jugar siempre contra los mismos? Regístrate y empieza a jugar con nuevos jugadores cada día.</target>
             </trans-unit>
 			
             <trans-unit id="club.heading">
