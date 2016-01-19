@@ -1,17 +1,16 @@
 {# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
 {% extends 'base.html.twig' %}
 {% block header %}
-{% include 'default/_header_homepage.html.twig' %}
+{% include 'default/_header_general_pages.html.twig' %}
 {% endblock header %}
 {% block body %}
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-			    <h1>Access denied</h1>
+			    <h1>Page not found</h1>
 			    <p>
-			        The requested page couldn't be accessed. You need the right permission to access this URL. 
+			        The requested page couldn't be located. Checkout for any URL misspelling or <a href="{{ path('homepage') }}">return to the homepage</a>. 
 			    </p>
-			    <p><a href="{{ path('user_homepage') }}">Return to the homepage</a>.</p>
 				<hr>
 			</div>
 		</div>  
