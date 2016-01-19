@@ -1,0 +1,18 @@
+{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+{% block header %}
+{% include 'default/_header_homepage.html.twig' %}
+{% endblock header %}
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+			    <h1>Access Denied</h1>
+			    <p>
+			        The requested page couldn't be accessed. You need the right permission to access this URL. 
+			    </p>
+			    <p><a href="{{ path('user_homepage') }}">Return to the homepage</a>.</p>
+			</div>
+		</div>  
+	</div>
+{% endblock %}
