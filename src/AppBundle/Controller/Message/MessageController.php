@@ -81,6 +81,16 @@ class MessageController extends Controller
 
 		return $this->render('message/message_read.html.twig', array('message' => $messageToRead));
 	}
+
+	/**
+	* @Route("user/challenge/message{slug}", name="challenge_message")
+	*/
+	public function readChallengeMessageAction(Request $request, $slug){
+		$em = $this->getDoctrine()->getEntityManager();
+		$messages = $em->getRepository('AppBundle:Message')->getChallengeMessages($slug);
+		
+		return $this->render('message/challenge_message_read.html.twig', array('messages' => $messages));
+	}
 }
 
 ?>

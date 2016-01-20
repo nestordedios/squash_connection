@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Squash Connection - Messages{% endblock %}
+
+{% block body_id 'message_read' %}
+
+{% block header %}
+	{% include 'user/_header_user_homepage.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<div class="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-primary">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-12">
+									<h1>Message from {{ messages[0].nameSender }} {{ messages[0].lastNameSender }}.</h1>					
+									<div class="bg-info message">
+										<p>{{ messages[0].message }}</p>
+										<h6  class="text-right">{{ messages[0].date|date('l jS \\of F Y \\a\\t H:i:s') }}</h6>
+									</div>									
+								</div>
+							</div>
+						</div>
+					</div>					
+						<div class="text-center">
+							<a class="btn btn-primary" href="{{ path('user_messages') }}">Back to messages</a>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock body %}

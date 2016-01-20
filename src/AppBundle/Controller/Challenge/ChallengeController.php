@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Challenge;
 use AppBundle\Entity\Match;
+use AppBundle\Entity\Message;
 use Doctrine\ORM\EntityRepository;
 use AppBundle\Form\ChallengeType;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -24,6 +25,7 @@ class ChallengeController extends Controller
 		$lostMatches = $this->getDoctrine()->getRepository('AppBundle:User')->getLostMatches($slug);
 		$wonMatches = $this->getDoctrine()->getRepository('AppBundle:User')->getWonMatches($slug);
 		$challenge = new Challenge();
+		$message = new Message();
 		$user = $this->getUser();
 		$tokenStorage = $this->container->get('security.token_storage');
 
@@ -38,11 +40,18 @@ class ChallengeController extends Controller
 			$challenge->setPlayer2($request->get('player2'));
 			$challenge->setPublishedDate(new \DateTime('now'));
 			$challenge->setClub($data->getClub()->getId());
-
+			$message->setSenderId($user->getId());
+			$message->setReceiverId($request->get('player2'));
+			$message->setStatus(0);
+			$message->setMessage($data->getMessage());
+			$message->setDate(new \DateTime('now'));
 			try {
 				//Saving Challenge in the DataBase
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($challenge);
+				$em->flush();				
+				$message->setType($challenge->getId());
+				$em->persist($message);
 				$em->flush();
 
 				$this->addFlash(

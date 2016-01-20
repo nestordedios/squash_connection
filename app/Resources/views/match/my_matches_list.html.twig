@@ -29,7 +29,6 @@
 												<th>Club</th>
 												<th>Date</th>
 												<th>Time</th>
-												<th>Comments</th>
 												<th>Result</th>
 											</tr>
 										</thead>
@@ -41,12 +40,6 @@
 												<td>{{ match.clubName }}</td>
 												<td class="date">{{ match.date|date('l, jS F Y') }}</td>
 												<td>{{ match.time|date('H:i') }}</td>
-												<td>												
-													<a href="#"> 
-														Comments
-														<span class="badge"></span>
-													</a>
-												</td>
 												<td>
 													<div class="row">
 														<a id="won" href="#" class="btn btn-success result" role="button" onclick="checkDate({{ match.id }}, this.text)">WON</a>			

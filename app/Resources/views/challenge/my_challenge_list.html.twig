@@ -37,7 +37,7 @@
 											<td>{{ challenge.date|date('l, jS F Y') }}</td>
 											<td>{{ challenge.time|date('H:i') }}</td>
 											<td>												
-												<a href="#"> 
+												<a href="{{ path('challenge_message', {'slug': challenge.id}) }}"> 
 													Messages
 													<span class="badge"></span>
 												</a>
